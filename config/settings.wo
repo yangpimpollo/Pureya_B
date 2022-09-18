@@ -1,0 +1,7 @@
+     width:   900
+    height:   600
+  winStyle:    4
+frameLimit:    0
+     vSync:    0
+  language:    1
+     debug:    1

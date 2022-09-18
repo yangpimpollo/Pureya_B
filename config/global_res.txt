@@ -1,0 +1,17 @@
+
+	global resources
+
+	1:2:0:8
+
+global_res::mamelon   #  Mamelon.otf
+global_res::icon      #  icon.png
+global_res::cursor    #  cursor.png
+
+global_stg::title     #Dragon Knight#龍騎士#Caballero Dragon#
+global_stg::new_game  #new game#新游戲#nueva partida#
+global_stg::load_game #load game#讀取游戲#cargar partida#
+global_stg::settings  #settings#設置#ajustes#
+global_stg::exit      #exit#退出#salir#
+global_stg::apply     #apply#應用#aplicar#
+global_stg::back      #back#返回#volver#
+global_stg::con_tinue #continue#繼續#continuar#

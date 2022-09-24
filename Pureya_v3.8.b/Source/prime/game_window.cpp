@@ -18,6 +18,17 @@ game_window::game_window(game_core& arg) : app(&arg)
 
 	if (sf::Joystick::isConnected(0)) activeCursor = false;
 	this->setMouseCursorVisible(activeCursor);
+
+	float multiply1 = 1360.f / WIDTH;
+	//float multiply2 = sf::VideoMode::getDesktopMode().height * (1360.f / sf::VideoMode::getDesktopMode().width);
+	float multiply2 = 764.2f;
+	this->view = new sf::View();
+	this->viewSize.x = (winStyle != 8) ? WIDTH * multiply1 : (1360.f);
+	this->viewSize.y = (winStyle != 8) ? HEIGHT * multiply1 : (multiply2);
+	//std::cout << "multiply2:  " << multiply2 << std::endl;
+	this->view->setCenter(sf::Vector2f(682.5f, 382.5f));
+	this->view->setSize(this->viewSize);
+
 }
 
 game_window::~game_window()
@@ -27,10 +38,22 @@ game_window::~game_window()
 
 void game_window::winEvents(sf::Event event)
 {
+	mouse_pos = sf::Mouse::getPosition(*this);
+
 	if (event.type == sf::Event::Closed)
 		this->close();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 		this->close();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad8))
+		this->view->move(sf::Vector2f(0.0f, -1.5f));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad2))
+		this->view->move(sf::Vector2f(0.0f, 1.5f));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad5))
+		this->view->rotate(5.f);
+
+	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::P)
+		pause = !pause;
 
 	if (event.type == sf::Event::MouseMoved) {
 		activeCursor = true;
@@ -41,8 +64,4 @@ void game_window::winEvents(sf::Event event)
 		activeCursor = false;
 		this->setMouseCursorVisible(activeCursor);
 	}
-}
-
-void game_window::setWinView()
-{
 }

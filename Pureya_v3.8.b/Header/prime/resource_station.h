@@ -53,9 +53,6 @@ private:
 
 };
 
-
-#endif
-
 template<typename EnumA, typename EnumB>
 inline resource_station<EnumA, typename EnumB>::resource_station(std::string name) : name(name)
 {
@@ -78,6 +75,7 @@ inline resource_station<EnumA, typename EnumB>::~resource_station()
 template<typename EnumA, typename EnumB>
 inline void resource_station<EnumA, EnumB>::loadSettings()
 {
+	setmap.clear();
 	std::string setDat;
 	std::fstream settingFile;
 	settingFile.open(set_path, std::ios::in | std::ios::out | std::ios::app);
@@ -183,3 +181,5 @@ inline std::wstring resource_station<EnumA, typename EnumB>::to_wstring(std::str
 	std::wstring_convert<convert_t, wchar_t> strconverter;
 	return strconverter.from_bytes(str);
 }
+
+#endif

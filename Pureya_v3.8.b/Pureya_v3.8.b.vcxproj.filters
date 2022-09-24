@@ -19,6 +19,9 @@
     <Filter Include="Source Files\prime">
       <UniqueIdentifier>{0e45446c-127e-473a-bc83-be7c5af98ffe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\config">
+      <UniqueIdentifier>{74dc5d31-205b-478c-a9b0-98aeb15da6f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +32,12 @@
     </ClCompile>
     <ClCompile Include="Source\prime\game_window.cpp">
       <Filter>Source Files\prime</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\prime\debug_mode.cpp">
+      <Filter>Source Files\prime</Filter>
+    </ClCompile>
+    <ClCompile Include="Header\prime\scene_manager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,8 +53,24 @@
     <ClInclude Include="Header\prime\game_window.h">
       <Filter>Header Files\prime</Filter>
     </ClInclude>
-    <ClInclude Include="Header\prime\data_manager.h">
+    <ClInclude Include="Header\prime\debug_mode.h">
       <Filter>Header Files\prime</Filter>
     </ClInclude>
+    <ClInclude Include="Header\prime\scene_manager.h">
+      <Filter>Header Files\prime</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\prime\scene.h">
+      <Filter>Header Files\prime</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\config\global_res.txt">
+      <Filter>Resource Files\config</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\config\settings.wo">
+      <Filter>Resource Files\config</Filter>
+    </None>
   </ItemGroup>
 </Project>

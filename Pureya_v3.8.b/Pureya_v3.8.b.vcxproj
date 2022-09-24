@@ -151,16 +151,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Header\prime\scene_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\game_core.cpp" />
+    <ClCompile Include="Source\prime\debug_mode.cpp" />
     <ClCompile Include="Source\prime\game_window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\game_core.h" />
-    <ClInclude Include="Header\prime\data_manager.h" />
+    <ClInclude Include="Header\prime\debug_mode.h" />
     <ClInclude Include="Header\prime\game_window.h" />
     <ClInclude Include="Header\prime\label_space.h" />
     <ClInclude Include="Header\prime\resource_station.h" />
+    <ClInclude Include="Header\prime\scene.h" />
+    <ClInclude Include="Header\prime\scene_manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\config\global_res.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\config\settings.wo" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

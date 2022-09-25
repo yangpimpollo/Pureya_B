@@ -10,6 +10,11 @@ struct global {
 	enum class stg { title, new_game, load_game, settings, exit, apply, back, con_tinue };
 };
 
+struct load_res {
+	enum class res { load1, load2 };
+	enum class stg { loading };
+};
+
 enum class scene1_id {  };
 enum class scene2_id {  };
 enum class scene3_id { mamelon, back2, icon, tree, Full_Momentum };

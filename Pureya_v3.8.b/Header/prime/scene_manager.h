@@ -5,6 +5,7 @@
 #include <iostream> 
 #include <SFML/Graphics.hpp>
 #include "game_core.h"
+#include "prime/load_mode.h"
 #include "prime/scene.h"
 //#include "scene/sc_load.h"
 //#include "scene/sc_splash.h"
@@ -44,20 +45,24 @@ private:
 
 inline scene_Manager::scene_Manager(game_core& arg) : app(&arg)
 {
-
+	this->active_scene = new load_mode(*app);
 }
 
 inline scene_Manager::~scene_Manager()
 {
+	//delete active_scene;
+	active_scene->destroy();
 	std::cout << "delete scene manager" << std::endl;
 }
 
 inline void scene_Manager::update(sf::Event event, sf::Time deltaTime)
 {
+	this->active_scene->update(event, deltaTime);
 }
 
 inline void scene_Manager::render()
 {
+	this->active_scene->render();
 }
 
 inline void scene_Manager::changeScene(gameScenes::index arg)

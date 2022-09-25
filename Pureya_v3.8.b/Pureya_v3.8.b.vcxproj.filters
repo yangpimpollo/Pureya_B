@@ -39,6 +39,9 @@
     <ClCompile Include="Header\prime\scene_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\prime\load_mode.cpp">
+      <Filter>Source Files\prime</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\game_core.h">
@@ -62,9 +65,15 @@
     <ClInclude Include="Header\prime\scene.h">
       <Filter>Header Files\prime</Filter>
     </ClInclude>
+    <ClInclude Include="Header\prime\load_mode.h">
+      <Filter>Header Files\prime</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\config\global_res.txt">
+      <Filter>Resource Files\config</Filter>
+    </Text>
+    <Text Include="..\config\load_res.txt">
       <Filter>Resource Files\config</Filter>
     </Text>
   </ItemGroup>

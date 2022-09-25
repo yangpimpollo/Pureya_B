@@ -5,7 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-class game_init;
+class game_core;
 
 class scene
 {

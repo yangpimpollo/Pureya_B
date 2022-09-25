@@ -1,0 +1,9 @@
+
+	load resources
+
+	0:2:0:1
+
+load_res::load1       #  load1.png
+load_res::load2       #  load2.png
+
+load_stg::title     #...         loading         ...#...         正在加载         ...#...         cargando         ...#

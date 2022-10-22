@@ -22,6 +22,18 @@
     <Filter Include="Resource Files\config">
       <UniqueIdentifier>{74dc5d31-205b-478c-a9b0-98aeb15da6f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene">
+      <UniqueIdentifier>{7d47111e-50fe-467e-9b57-77038432fa82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene">
+      <UniqueIdentifier>{0feaa8f7-743a-4791-bad9-16f008ace4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\pieces">
+      <UniqueIdentifier>{650fa84b-7fd9-4499-86ff-05973b445ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pieces">
+      <UniqueIdentifier>{b5428213-c3f9-4564-92da-c95caab58fa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,11 +48,17 @@
     <ClCompile Include="Source\prime\debug_mode.cpp">
       <Filter>Source Files\prime</Filter>
     </ClCompile>
-    <ClCompile Include="Header\prime\scene_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\prime\load_mode.cpp">
       <Filter>Source Files\prime</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\prime\joystick.cpp">
+      <Filter>Source Files\prime</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\sc_particle.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pieces\particle.cpp">
+      <Filter>Source Files\pieces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +85,18 @@
     </ClInclude>
     <ClInclude Include="Header\prime\load_mode.h">
       <Filter>Header Files\prime</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\prime\joystick.h">
+      <Filter>Header Files\prime</Filter>
+    </ClInclude>
+    <ClInclude Include="keycube.h">
+      <Filter>Header Files\pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\scene\sc_particle.h">
+      <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\pieces\particle.h">
+      <Filter>Header Files\pieces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

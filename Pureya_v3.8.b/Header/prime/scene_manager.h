@@ -7,7 +7,7 @@
 #include "game_core.h"
 #include "prime/load_mode.h"
 #include "prime/scene.h"
-//#include "scene/sc_load.h"
+#include "scene/sc_particle.h"
 //#include "scene/sc_splash.h"
 
 //class game_core;
@@ -45,7 +45,8 @@ private:
 
 inline scene_Manager::scene_Manager(game_core& arg) : app(&arg)
 {
-	this->active_scene = new load_mode(*app);
+	//this->active_scene = new load_mode(*app);
+	this->active_scene = new sc_particle(*app);
 }
 
 inline scene_Manager::~scene_Manager()

@@ -14,6 +14,7 @@ game_core::~game_core()
 
 void game_core::start()
 {
+    std::cout << "start pureya_v3.8.b" << std::endl;
 	do {
 		init();
 		cicles();
@@ -37,6 +38,8 @@ void game_core::init()
 
 void game_core::cicles()
 {
+    this->joyControl = new joystick();
+
 	const int _fps = 60;
 	sf::Time update_time = sf::microseconds(1000000 / _fps);
 	sf::Clock clock;
@@ -61,6 +64,7 @@ void game_core::cicles()
         {
             this->window->winEvents(event);
         }
+        this->joyControl->update();
 
         update(event, time_elapsed);
         while (delta >= update_time) {

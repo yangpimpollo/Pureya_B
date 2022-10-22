@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "prime/joystick.h"
 #include "prime/debug_mode.h"
 #include "prime/game_window.h"
 #include "prime/resource_station.h"
@@ -17,6 +18,7 @@ public:
 	void start();
 	inline bool setReset(bool arg) { this->resetRequest=arg; };
 	
+	joystick* joyControl;
 	debug_mode* debug;
 	game_window* window; 
 	scene_Manager* scene_mng;

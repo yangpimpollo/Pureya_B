@@ -54,7 +54,7 @@ void debug_mode::render()
 	app->window->draw(this->fps_txt);
 	app->window->draw(this->mouse_X);
 	app->window->draw(this->mouse_Y);
-	app->window->draw(this->lang_test);
+	//app->window->draw(this->lang_test);
 }
 
 void debug_mode::set_fps(int arg)

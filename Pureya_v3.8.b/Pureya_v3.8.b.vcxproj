@@ -151,22 +151,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Header\prime\scene_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\game_core.cpp" />
+    <ClCompile Include="Source\pieces\particle.cpp" />
     <ClCompile Include="Source\prime\debug_mode.cpp" />
     <ClCompile Include="Source\prime\game_window.cpp" />
+    <ClCompile Include="Source\prime\joystick.cpp" />
     <ClCompile Include="Source\prime\load_mode.cpp" />
+    <ClCompile Include="Source\scene\sc_particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\game_core.h" />
+    <ClInclude Include="Header\pieces\particle.h" />
     <ClInclude Include="Header\prime\debug_mode.h" />
     <ClInclude Include="Header\prime\game_window.h" />
+    <ClInclude Include="Header\prime\joystick.h" />
     <ClInclude Include="Header\prime\label_space.h" />
     <ClInclude Include="Header\prime\load_mode.h" />
     <ClInclude Include="Header\prime\resource_station.h" />
     <ClInclude Include="Header\prime\scene.h" />
     <ClInclude Include="Header\prime\scene_manager.h" />
+    <ClInclude Include="Header\scene\sc_particle.h" />
+    <ClInclude Include="keycube.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\config\global_res.txt" />

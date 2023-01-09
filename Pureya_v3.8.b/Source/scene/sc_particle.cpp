@@ -24,6 +24,7 @@ sc_particle::~sc_particle()
 
 void sc_particle::update(sf::Event event, sf::Time deltaTime)
 {
+	p1.update(event, deltaTime);
 }
 
 void sc_particle::render()

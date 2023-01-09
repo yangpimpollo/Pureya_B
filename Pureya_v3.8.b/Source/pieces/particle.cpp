@@ -17,8 +17,15 @@ particle::~particle()
 {
 }
 
-void particle::update(sf::Event event, sf::RenderWindow& window)
+void particle::update(sf::Event event, sf::Time deltaTime)
 {
+	if ((px) < 432.5f || (px + radius*2) > 932.5f) dx *= -1.f;
+	if ((py) < 132.5f || (py + radius*2) > 632.5f) dy *= -1.f;
+
+	px += dx * 305.f * deltaTime.asSeconds();
+	py += dy * 305.f * deltaTime.asSeconds();
+
+	circle.setPosition(px, py);
 }
 
 void particle::draw(sf::RenderTarget& target, sf::RenderStates states) const

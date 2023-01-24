@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "physics/aabb_system.h"
+
 
 class game_core;
 
@@ -16,8 +18,13 @@ public:
 	virtual void update(sf::Event event, sf::Time deltaTime) {};
 	virtual void render() {};
 	virtual void destroy() {};
+	
 
 private:
+
+protected:
+	aabb_system aabbSystem;
+	
 
 };
 

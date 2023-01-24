@@ -18,6 +18,16 @@ debug_mode::debug_mode(game_core& arg) : app(&arg)
 	mouse_Y.setFillColor(sf::Color::Red);
 	mouse_Y.setPosition(40.f, 85.f);
 
+	NjoyX.setFont(app->res->getFont(global::res::mamelon));
+	NjoyX.setCharacterSize(16);
+	NjoyX.setFillColor(sf::Color::Red);
+	NjoyX.setPosition(40.f, 105.f);
+
+	NjoyY.setFont(app->res->getFont(global::res::mamelon));
+	NjoyY.setCharacterSize(16);
+	NjoyY.setFillColor(sf::Color::Red);
+	NjoyY.setPosition(40.f, 125.f);
+
 	lang_test.setFont(app->res->getFont(global::res::mamelon));
 	lang_test.setCharacterSize(60);
 	lang_test.setFillColor(sf::Color::Red);
@@ -41,6 +51,11 @@ void debug_mode::update(sf::Event event, sf::Time deltaTime)
 	this->mouse_X.setString("x: " + x);
 	this->mouse_Y.setString("y: " + y);
 
+	this->NjoyX.setString("Njoy_x: " + std::to_string(app->joyControl->getLjoystick().x));
+	this->NjoyY.setString("Njoy_y: " + std::to_string(app->joyControl->getLjoystick().y));
+
+
+
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::P) {
 		//std::cout << "P" << std::endl;
 		app->res->setLanguaje(language::EN);
@@ -54,6 +69,8 @@ void debug_mode::render()
 	app->window->draw(this->fps_txt);
 	app->window->draw(this->mouse_X);
 	app->window->draw(this->mouse_Y);
+	app->window->draw(this->NjoyX);
+	app->window->draw(this->NjoyY);
 	//app->window->draw(this->lang_test);
 }
 

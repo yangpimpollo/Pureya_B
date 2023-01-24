@@ -4,14 +4,21 @@ aabbox::aabbox()
 {
 }
 
-aabbox::aabbox(float x, float y, float w, float h, bool solid)
-	: x(x), y(y), w(w), h(h), solid(solid)
+aabbox::aabbox(sf::Vector2f position, sf::Vector2f size, bool solid)
+	: position(position), size(size), solid(solid)
 {
-    drawABox.setSize(sf::Vector2f(w, h));
-    drawABox.setPosition(x, y);
+    drawABox.setSize(size);
+    drawABox.setPosition(position);
     drawABox.setFillColor(sf::Color::Transparent);
     drawABox.setOutlineThickness(1.f);
     drawABox.setOutlineColor(color1);
+
+    //sf::Vector2f A = sf::Vector2f(2.f, 3.f);
+    //sf::Vector2f B = sf::Vector2f(3.f, 0.f);
+    //sf::Vector2f C = (A + B) * 2.f;
+
+    //std::cout << "sum vector: " << C.x << "|" << C.y << std::endl;
+
 }
 
 aabbox::~aabbox()
@@ -20,7 +27,8 @@ aabbox::~aabbox()
 
 void aabbox::update(sf::Event event, sf::Time deltaTime)
 {
-    this->setPosition(x, y);
+    this->setPosition(position + (direction*speed));
+    drawABox.setPosition(this->position);
 }
 
 void aabbox::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -28,11 +36,5 @@ void aabbox::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(drawABox);
 }
 
-void aabbox::move(float _x, float _y){ this->setPosition(x, y);  }
-
-void aabbox::setPosition(float x, float y)
-{
-    this->x = x;
-    this->y = y;
-    drawABox.setPosition(this->x, this->y);
-}
+//inline void aabbox::move(sf::Vector2f arg){ this->direction = normalize(arg); }
+//inline void aabbox::setPosition(sf::Vector2f arg){ this->position = arg; }

@@ -151,9 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Header\physics\math.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabbox.cpp" />
+    <ClCompile Include="Source\physics\aabb_system.cpp" />
     <ClCompile Include="Source\pieces\particle.cpp" />
     <ClCompile Include="Source\prime\debug_mode.cpp" />
     <ClCompile Include="Source\prime\game_window.cpp" />

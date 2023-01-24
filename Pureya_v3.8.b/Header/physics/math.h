@@ -4,7 +4,13 @@
 
 #include <SFML/Graphics.hpp>
 
-sf::Vector2f normalize(sf::Vector2f vector) {
+class math {
+    public:
+        inline sf::Vector2f normalize(sf::Vector2f vector);
+
+};
+
+inline sf::Vector2f normalize(sf::Vector2f vector) {
 
     float modulus = std::sqrt((vector.x * vector.x) + (vector.y * vector.y));
 

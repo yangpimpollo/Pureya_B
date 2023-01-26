@@ -11,7 +11,19 @@ aabb_system::~aabb_system()
 
 void aabb_system::update(sf::Event event, sf::Time deltaTime)
 {
-	if (all_ABbox.at(0)->getPosition().y < 200) {
-		std::cout << "menor a 200" << std::endl;
+	std::pair <float, float>* intervals = new std::pair <float, float>[all_ABbox.size() * 2];
+
+	for (int i = 0; i < all_ABbox.size(); i++) {
+		intervals[2 * i] = std::make_pair(all_ABbox[i]->getNexPosition().x, i);
+		intervals[2 * i + 1] = std::make_pair(all_ABbox[i]->getNexCorner().x, i);
 	}
+
+	std::cout << "size : " << &intervals.size() << std::endl;
+
+
+	if (intervals[1].first > 450) {
+		std::cout << "=" << all_ABbox.size() << std::endl;
+	}
+
+	delete[] intervals;
 }

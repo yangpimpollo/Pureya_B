@@ -17,7 +17,12 @@ public:
 
 	inline void move(sf::Vector2f arg) { this->direction = normalize(arg); }
 	inline void setPosition(sf::Vector2f arg) { this->position = arg; }
+
 	inline sf::Vector2f getPosition() { return position; }
+	inline sf::Vector2f getDirection() { return direction; }
+	
+	inline sf::Vector2f getNexPosition() { return position + (direction * speed); }
+	inline sf::Vector2f getNexCorner() { return position + size + (direction * speed); }
 
 private:
 	bool solid;

@@ -11,19 +11,36 @@ aabb_system::~aabb_system()
 
 void aabb_system::update(sf::Event event, sf::Time deltaTime)
 {
-	std::pair <float, float>* intervals = new std::pair <float, float>[all_ABbox.size() * 2];
+	std::vector<std::pair <float, int>> intervals;
 
 	for (int i = 0; i < all_ABbox.size(); i++) {
-		intervals[2 * i] = std::make_pair(all_ABbox[i]->getNexPosition().x, i);
-		intervals[2 * i + 1] = std::make_pair(all_ABbox[i]->getNexCorner().x, i);
+		intervals.push_back(std::make_pair(all_ABbox[i]->getNexPosition().x, i));
+		intervals.push_back(std::make_pair(all_ABbox[i]->getNexCorner().x, i));
 	}
+	quickSort(intervals, 0, intervals.size() - 1);
 
-	std::cout << "size : " << &intervals.size() << std::endl;
+	std::vector<int> active;
 
+	for (int i = 0; i < intervals.size(); i++) {
+		bool isActive = false;
+		for (int j = 0; j < active.size(); j++) {
 
-	if (intervals[1].first > 450) {
-		std::cout << "=" << all_ABbox.size() << std::endl;
+			if (intervals[i].second != active[j]) {
+				//collision
+				if (!(all_ABbox[i]->getNexPosition().y > all_ABbox[j]->getNexCorner().y ||
+					all_ABbox[i]->getNexCorner().y < all_ABbox[j]->getNexPosition().y)) {
+
+					all_ABbox[i]->addActiveCollision(j);
+					all_ABbox[j]->addActiveCollision(i);
+				}
+				//std::cout << "(" << intervals[i] << " - " << active[j] << ")" << std::endl;
+			}
+			else {
+				active.erase(active.begin() + j);
+				isActive = true;
+				break;
+			}
+		}
+		if (!isActive) active.push_back(intervals[i].second);
 	}
-
-	delete[] intervals;
 }

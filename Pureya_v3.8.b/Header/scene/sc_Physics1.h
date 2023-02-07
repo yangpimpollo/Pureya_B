@@ -19,6 +19,7 @@ private:
 	sf::RectangleShape back;
 
 	aabbox b1;
+	aabbox b2;
 };
 
 

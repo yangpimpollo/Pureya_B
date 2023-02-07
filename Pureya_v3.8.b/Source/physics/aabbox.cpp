@@ -27,8 +27,17 @@ aabbox::~aabbox()
 
 void aabbox::update(sf::Event event, sf::Time deltaTime)
 {
+    if (active.size() > 0) {
+        //direction= sf::Vector2f(0.f, 0.f);
+        drawABox.setOutlineColor(color2);
+    }
+    else {
+        drawABox.setOutlineColor(color1);
+    }
     this->setPosition(position + (direction*speed));
     drawABox.setPosition(this->position);
+
+    this->active.clear();
 }
 
 void aabbox::draw(sf::RenderTarget& target, sf::RenderStates states) const

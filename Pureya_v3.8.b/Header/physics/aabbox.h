@@ -24,6 +24,8 @@ public:
 	inline sf::Vector2f getNexPosition() { return position + (direction * speed); }
 	inline sf::Vector2f getNexCorner() { return position + size + (direction * speed); }
 
+	inline void addActiveCollision(int arg) { this->active.push_back(arg);}
+
 private:
 	bool solid;
 	float speed = 0.05f;
@@ -33,6 +35,8 @@ private:
 
 	sf::Color color1 = sf::Color(64, 224, 208);
 	sf::Color color2 = sf::Color(224, 62, 78);
+
+	std::vector<int> active;
 
 	//std::vector<ABbox*>* all_ABbox;
 };

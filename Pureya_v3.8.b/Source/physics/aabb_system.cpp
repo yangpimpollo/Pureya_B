@@ -27,13 +27,23 @@ void aabb_system::update(sf::Event event, sf::Time deltaTime)
 
 			if (intervals[i].second != active[j]) {
 				//collision
-				if (!(all_ABbox[i]->getNexPosition().y > all_ABbox[j]->getNexCorner().y ||
-					all_ABbox[i]->getNexCorner().y < all_ABbox[j]->getNexPosition().y)) {
+				if (!(all_ABbox[intervals[i].second]->getNexPosition().y > all_ABbox[active[j]]->getNexCorner().y ||
+					  all_ABbox[intervals[i].second]->getNexCorner().y < all_ABbox[active[j]]->getNexPosition().y)) {
 
-					all_ABbox[i]->addActiveCollision(j);
-					all_ABbox[j]->addActiveCollision(i);
+					all_ABbox[intervals[i].second]->addActiveCollision(active[j]);
+					all_ABbox[active[j]]->addActiveCollision(intervals[i].second);
 				}
-				//std::cout << "(" << intervals[i] << " - " << active[j] << ")" << std::endl;
+
+
+
+				/*if (!(all_ABbox[i]->getNexPosition().y > all_ABbox[j]->getNexCorner().y)) {
+					std::cout << "AisBelowB" << std::endl;
+				}*/
+
+				/*if (!(all_ABbox[i]->getNexCorner().y < all_ABbox[j]->getNexPosition().y)) {
+					std::cout << "AisAboveB" << std::endl;
+				}*/
+				//std::cout << "(" << intervals[i].second << " - " << active[j] << ")" << std::endl;
 			}
 			else {
 				active.erase(active.begin() + j);

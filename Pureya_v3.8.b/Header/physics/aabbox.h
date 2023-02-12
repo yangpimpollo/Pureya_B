@@ -28,7 +28,7 @@ public:
 
 private:
 	bool solid;
-	float speed = 0.05f;
+	float speed = 0.08f;
 	sf::Vector2f position, size;
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
 	sf::RectangleShape drawABox;

@@ -20,6 +20,7 @@ private:
 
 	aabbox b1;
 	aabbox b2;
+	aabbox b3;
 };
 
 

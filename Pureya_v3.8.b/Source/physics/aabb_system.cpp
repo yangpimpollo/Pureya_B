@@ -33,16 +33,7 @@ void aabb_system::update(sf::Event event, sf::Time deltaTime)
 					all_ABbox[intervals[i].second]->addActiveCollision(active[j]);
 					all_ABbox[active[j]]->addActiveCollision(intervals[i].second);
 				}
-
-
-
-				/*if (!(all_ABbox[i]->getNexPosition().y > all_ABbox[j]->getNexCorner().y)) {
-					std::cout << "AisBelowB" << std::endl;
-				}*/
-
-				/*if (!(all_ABbox[i]->getNexCorner().y < all_ABbox[j]->getNexPosition().y)) {
-					std::cout << "AisAboveB" << std::endl;
-				}*/
+ 
 				//std::cout << "(" << intervals[i].second << " - " << active[j] << ")" << std::endl;
 			}
 			else {

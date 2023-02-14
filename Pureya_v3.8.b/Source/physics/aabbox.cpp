@@ -28,7 +28,10 @@ aabbox::~aabbox()
 void aabbox::update(sf::Event event, sf::Time deltaTime)
 {
     if (active.size() > 0) {
-        //direction= sf::Vector2f(0.f, 0.f);
+        /*for (int i = 0; i < active.size(); i++) {
+            if(active[i].)
+        }*/
+        direction= sf::Vector2f(0.f, 0.f);
         drawABox.setOutlineColor(color2);
     }
     else {

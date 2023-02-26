@@ -7,11 +7,11 @@ sc_Physics1::sc_Physics1(game_core& arg) : app(&arg)
 	back.setPosition(0.f, 0.f);
 	back.setFillColor(sf::Color::Color(0, 0, 25, 255));
 
-	b1 = aabbox(sf::Vector2f(300.f, 300.f), sf::Vector2f(50.f, 50.f), true);
+	b1 = aabbox(sf::Vector2f(300.f, 300.f), sf::Vector2f(50.f, 50.f));
 	aabbSystem.includeToScene(b1);
-	b2 = aabbox(sf::Vector2f(500.f, 400.f), sf::Vector2f(250.f, 150.f), true);
+	b2 = aabbox(sf::Vector2f(650.f, 630.f), sf::Vector2f(250.f, 150.f));
 	aabbSystem.includeToScene(b2);
-	b3 = aabbox(sf::Vector2f(400.f, 100.f), sf::Vector2f(50.f, 280.f), true);
+	b3 = aabbox(sf::Vector2f(600.f, 100.f), sf::Vector2f(50.f, 280.f));
 	aabbSystem.includeToScene(b3);
 }
 

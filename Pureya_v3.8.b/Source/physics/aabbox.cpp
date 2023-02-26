@@ -4,9 +4,10 @@ aabbox::aabbox()
 {
 }
 
-aabbox::aabbox(sf::Vector2f position, sf::Vector2f size, bool solid)
-	: position(position), size(size), solid(solid)
+aabbox::aabbox(sf::Vector2f position, sf::Vector2f size)
+	: position(position), size(size)
 {
+    
     drawABox.setSize(size);
     drawABox.setPosition(position);
     drawABox.setFillColor(sf::Color::Transparent);
@@ -18,7 +19,8 @@ aabbox::aabbox(sf::Vector2f position, sf::Vector2f size, bool solid)
     //sf::Vector2f C = (A + B) * 2.f;
 
     //std::cout << "sum vector: " << C.x << "|" << C.y << std::endl;
-
+    //arg->push_back(this);
+    
 }
 
 aabbox::~aabbox()
@@ -27,11 +29,32 @@ aabbox::~aabbox()
 
 void aabbox::update(sf::Event event, sf::Time deltaTime)
 {
+    float m = all_ABbox[0]->getNexCorner().y;
+    bool ver = false;
+    bool hor = false;
+
     if (active.size() > 0) {
-        /*for (int i = 0; i < active.size(); i++) {
-            if(active[i].)
-        }*/
-        direction= sf::Vector2f(0.f, 0.f);
+        for (int i = 0; i < active.size(); i++) {
+            if (!ver) {
+                if (!(getPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
+                    getCorner().x < all_ABbox[active[i]]->getNexPosition().x ||
+                    getNexCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
+                    getNexPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
+                    ver = true;
+                }
+            }
+            if (!hor) {
+                if (!(getNexPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
+                    getNexCorner().x < all_ABbox[active[i]]->getNexPosition().x ||
+                    getCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
+                    getPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
+                    hor = true;
+                }
+            }             
+        }
+        if(hor) direction.x += direction.x * -1.f;
+        if(ver) direction.y += direction.y * -1.f;
+
         drawABox.setOutlineColor(color2);
     }
     else {

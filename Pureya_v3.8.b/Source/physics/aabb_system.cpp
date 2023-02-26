@@ -16,6 +16,7 @@ void aabb_system::update(sf::Event event, sf::Time deltaTime)
 	for (int i = 0; i < all_ABbox.size(); i++) {
 		intervals.push_back(std::make_pair(all_ABbox[i]->getNexPosition().x, i));
 		intervals.push_back(std::make_pair(all_ABbox[i]->getNexCorner().x, i));
+		all_ABbox[i]->setAllBox(all_ABbox);
 	}
 	quickSort(intervals, 0, intervals.size() - 1);
 

@@ -10,7 +10,7 @@ class aabbox : public sf::Drawable
 {
 public:
 	aabbox();
-	aabbox(sf::Vector2f position, sf::Vector2f size, bool solid);
+	aabbox(sf::Vector2f position, sf::Vector2f size);
 	~aabbox();
 	void update(sf::Event event, sf::Time deltaTime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -19,15 +19,20 @@ public:
 	inline void setPosition(sf::Vector2f arg) { this->position = arg; }
 
 	inline sf::Vector2f getPosition() { return position; }
+	inline sf::Vector2f getCorner() { return position + size; }
 	inline sf::Vector2f getDirection() { return direction; }
 	
 	inline sf::Vector2f getNexPosition() { return position + (direction * speed); }
 	inline sf::Vector2f getNexCorner() { return position + size + (direction * speed); }
 
+	inline void setAllBox(std::vector<aabbox*>& all_ABbox_arg) { this->all_ABbox = all_ABbox_arg; }
 	inline void addActiveCollision(int arg) { this->active.push_back(arg);}
 
 private:
-	bool solid;
+	std::vector<aabbox*> all_ABbox;
+
+
+
 	float speed = 0.05f;
 	sf::Vector2f position, size;
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);

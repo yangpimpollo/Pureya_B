@@ -1,11 +1,12 @@
 #include "physics/aabbox.h"
+#include "game_core.h"
 
 aabbox::aabbox()
 {
 }
 
-aabbox::aabbox(sf::Vector2f position, sf::Vector2f size)
-	: position(position), size(size)
+aabbox::aabbox(game_core& arg, sf::Vector2f position, sf::Vector2f size)
+	: app(&arg), position(position), size(size)
 {
     
     drawABox.setSize(size);
@@ -34,32 +35,67 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
     bool hor = false;
 
     if (active.size() > 0) {
-        for (int i = 0; i < active.size(); i++) {
-            if (!ver) {
-                if (!(getPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
-                    getCorner().x < all_ABbox[active[i]]->getNexPosition().x ||
-                    getNexCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
-                    getNexPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
-                    ver = true;
+        if (direction != sf::Vector2f(0.f, 0.f)) {
+            for (int i = 0; i < active.size(); i++) {
+                if (!hor) {
+                    if (!(getCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
+                        getPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
+                        hor = true;
+                        //std::cout << "2" << std::endl;
+                    }
                 }
+                if (!ver) {
+                    if (!(getPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
+                        getCorner().x < all_ABbox[active[i]]->getNexPosition().x )) {
+                        ver = true;
+                        //std::cout << "1" << std::endl;
+                    }
+                }
+                
             }
-            if (!hor) {
-                if (!(getNexPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
-                    getNexCorner().x < all_ABbox[active[i]]->getNexPosition().x ||
-                    getCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
-                    getPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
-                    hor = true;
-                }
-            }             
+            if (hor) direction.x += direction.x * -1.f;
+            if (ver) direction.y += direction.y * -1.f;
         }
-        if(hor) direction.x += direction.x * -1.f;
-        if(ver) direction.y += direction.y * -1.f;
-
+        else {
+            direction += direction * -1.f;
+        }
+        
         drawABox.setOutlineColor(color2);
     }
     else {
         drawABox.setOutlineColor(color1);
     }
+
+    sf::Vector2i pixelPos = app->window->getMousePosition();
+    sf::Vector2f mousePos = app->window->mapPixelToCoords(pixelPos);
+    bool inBox = (mousePos.x > getPosition().x && mousePos.x < getCorner().x &&
+                  mousePos.y > getPosition().y && mousePos.y < getCorner().y )? true : false;
+
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        if (inBox && !clic1) {
+            clic1 = true;
+            mosPoss0 = mousePos - position;
+            std::cout << "selected" << std::endl;
+        }
+    }
+    
+    if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+        if (clic1) {
+            clic1 = false;
+            std::cout << "NO selected" << std::endl;
+        }
+    }
+
+
+
+
+
+    if (inBox) {
+        drawABox.setOutlineColor(color3);      
+    }
+
+    if (clic1) { position = mousePos - mosPoss0; }
+
     this->setPosition(position + (direction*speed));
     drawABox.setPosition(this->position);
 

@@ -21,6 +21,9 @@ private:
 	aabbox b1;
 	aabbox b2;
 	aabbox b3;
+	aabbox c1;
+	aabbox c2;
+	aabbox c3;
 };
 
 

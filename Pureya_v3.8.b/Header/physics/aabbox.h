@@ -6,11 +6,13 @@
 #include <SFML/Graphics.hpp>
 #include "physics/math.h"
 
+class game_core;
+
 class aabbox : public sf::Drawable
 {
 public:
 	aabbox();
-	aabbox(sf::Vector2f position, sf::Vector2f size);
+	aabbox(game_core& arg, sf::Vector2f position, sf::Vector2f size);
 	~aabbox();
 	void update(sf::Event event, sf::Time deltaTime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -29,21 +31,28 @@ public:
 	inline void addActiveCollision(int arg) { this->active.push_back(arg);}
 
 private:
+	game_core* app;
 	std::vector<aabbox*> all_ABbox;
 
 
 
-	float speed = 0.05f;
+	float speed = 0.10f;
 	sf::Vector2f position, size;
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
 	sf::RectangleShape drawABox;
 
 	sf::Color color1 = sf::Color(64, 224, 208);
 	sf::Color color2 = sf::Color(224, 62, 78);
+	sf::Color color3 = sf::Color(144, 0, 255);
 
 	std::vector<int> active;
 
 	//std::vector<ABbox*>* all_ABbox;
+
+	bool clic1 = false;
+	bool selected = false;
+	sf::Vector2f mosPoss0;
+
 };
 
 

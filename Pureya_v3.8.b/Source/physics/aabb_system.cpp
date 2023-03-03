@@ -28,8 +28,10 @@ void aabb_system::update(sf::Event event, sf::Time deltaTime)
 
 			if (intervals[i].second != active[j]) {
 				//collision
-				if (!(all_ABbox[intervals[i].second]->getNexPosition().y > all_ABbox[active[j]]->getNexCorner().y ||
-					  all_ABbox[intervals[i].second]->getNexCorner().y < all_ABbox[active[j]]->getNexPosition().y)) {
+				if (!(all_ABbox[intervals[i].second]->getNexPosition().x  >  all_ABbox[active[j]]->getNexCorner().x    ||
+					  all_ABbox[intervals[i].second]->getNexCorner().x    <  all_ABbox[active[j]]->getNexPosition().x  ||
+					  all_ABbox[intervals[i].second]->getNexPosition().y  >  all_ABbox[active[j]]->getNexCorner().y    ||
+					  all_ABbox[intervals[i].second]->getNexCorner().y    <  all_ABbox[active[j]]->getNexPosition().y  )) {
 
 					all_ABbox[intervals[i].second]->addActiveCollision(active[j]);
 					all_ABbox[active[j]]->addActiveCollision(intervals[i].second);

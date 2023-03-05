@@ -72,9 +72,6 @@
     <ClCompile Include="Source\physics\aabbox.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
-    <ClCompile Include="Header\physics\math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\physics\aabb_system.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
@@ -127,15 +124,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\config\global_res.txt">
-      <Filter>Resource Files\config</Filter>
-    </Text>
-    <Text Include="..\config\load_res.txt">
-      <Filter>Resource Files\config</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\config\settings.wo">
+      <Filter>Resource Files\config</Filter>
+    </None>
+    <None Include="..\config\global_res.wo">
+      <Filter>Resource Files\config</Filter>
+    </None>
+    <None Include="..\config\load_res.wo">
       <Filter>Resource Files\config</Filter>
     </None>
   </ItemGroup>

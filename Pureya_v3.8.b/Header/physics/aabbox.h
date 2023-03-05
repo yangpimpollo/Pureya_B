@@ -3,6 +3,7 @@
 #define AABBOX_H_INCLUDED
 
 #include <iostream> 
+#include <SFML/Graphics/Vertex.hpp>
 #include <SFML/Graphics.hpp>
 #include "physics/math.h"
 
@@ -37,9 +38,11 @@ private:
 
 
 	float speed = 0.10f;
-	sf::Vector2f position, size;
+	sf::Vector2f position, size, center;
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
 	sf::RectangleShape drawABox;
+	sf::CircleShape r1,r2,r3,r4, r5;
+	sf::Vertex lineL[2], lineR[2];
 
 	sf::Color color1 = sf::Color(64, 224, 208);
 	sf::Color color2 = sf::Color(224, 62, 78);

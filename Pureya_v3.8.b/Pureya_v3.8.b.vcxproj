@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Header\physics\math.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabbox.cpp" />
@@ -182,10 +181,8 @@
     <ClInclude Include="Header\scene\sc_Physics1.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\config\global_res.txt" />
-    <Text Include="..\config\load_res.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="..\config\global_res.wo" />
+    <None Include="..\config\load_res.wo" />
     <None Include="..\config\settings.wo" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

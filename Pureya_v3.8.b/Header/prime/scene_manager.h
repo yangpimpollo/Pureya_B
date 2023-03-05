@@ -46,9 +46,9 @@ private:
 
 inline scene_Manager::scene_Manager(game_core& arg) : app(&arg)
 {
-	//this->active_scene = new load_mode(*app);
+	this->active_scene = new load_mode(*app);
 	//this->active_scene = new sc_particle(*app);
-	this->active_scene = new sc_Physics1(*app);
+	//this->active_scene = new sc_Physics1(*app);
 }
 
 inline scene_Manager::~scene_Manager()

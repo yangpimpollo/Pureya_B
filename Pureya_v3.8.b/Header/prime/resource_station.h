@@ -79,6 +79,10 @@ inline void resource_station<EnumA, EnumB>::loadSettings()
 	std::string setDat;
 	std::fstream settingFile;
 	settingFile.open(set_path, std::ios::in | std::ios::out | std::ios::app);
+	if (!settingFile) {
+		std::cout << "Error occurred: file not loaded" << std::endl;
+		exit(-1);
+	}
 	for (int i = 0; i < 7; i++) {
 		getline(settingFile, setDat);
 		std::string delim = ":";
@@ -86,6 +90,7 @@ inline void resource_station<EnumA, EnumB>::loadSettings()
 		setmap.insert(std::make_pair(settings(i), std::stoi(setDat.substr(end, setDat.length() - end))));
 	}
 	settingFile.close();
+	
 }
 
 template<typename EnumA, typename EnumB>
@@ -94,8 +99,11 @@ inline void resource_station<EnumA, typename EnumB>::readResources()
 	int ftsx[4];
 	std::string datatext;
 	std::fstream initFile;
-	initFile.open("../config/" + name + ".txt", std::ios::in | std::ios::out | std::ios::app);
-
+	initFile.open("../config/" + name + ".wo", std::ios::in | std::ios::out | std::ios::app);
+	if (!initFile) {
+		std::cout << "Error occurred: file not loaded" << std::endl;
+		exit(-1);
+	}
 	getline(initFile, datatext);
 	getline(initFile, datatext);
 	std::cout << "   name:  " << datatext << std::endl;

@@ -21,6 +21,22 @@ aabbox::aabbox(game_core& arg, sf::Vector2f position, sf::Vector2f size)
 
     //std::cout << "sum vector: " << C.x << "|" << C.y << std::endl;
     //arg->push_back(this);
+    r1.setRadius(3.f);
+    r1.setOrigin(sf::Vector2f(3.f,3.f));
+    r1.setFillColor(color3);
+    r2.setRadius(3.f);
+    r2.setOrigin(sf::Vector2f(3.f, 3.f));
+    r2.setFillColor(color3);
+    r3.setRadius(3.f);
+    r3.setOrigin(sf::Vector2f(3.f, 3.f));
+    r3.setFillColor(color3);
+    r4.setRadius(3.f);
+    r4.setOrigin(sf::Vector2f(3.f, 3.f));
+    r4.setFillColor(color3);
+
+    //r5.setRadius(3.f);
+    //r5.setOrigin(sf::Vector2f(3.f, 3.f));
+    //r5.setFillColor(color3);
     
 }
 
@@ -72,32 +88,54 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
                   mousePos.y > getPosition().y && mousePos.y < getCorner().y )? true : false;
 
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        
+        selected = false;
         if (inBox && !clic1) {
             clic1 = true;
+            
             mosPoss0 = mousePos - position;
-            std::cout << "selected" << std::endl;
+            std::cout << "click & select" << std::endl;
         }
+        
     }
     
     if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
         if (clic1) {
-            clic1 = false;
-            std::cout << "NO selected" << std::endl;
+            clic1 = false; 
+            selected = true;
+            std::cout << "released click" << std::endl;
         }
+        
     }
 
 
 
 
 
-    if (inBox) {
+   /* if (inBox) {
         drawABox.setOutlineColor(color3);      
+    }*/
+
+    if (selected) {
+        drawABox.setOutlineColor(color3);
     }
 
     if (clic1) { position = mousePos - mosPoss0; }
 
+    center = position + size / 2.f;
     this->setPosition(position + (direction*speed));
     drawABox.setPosition(this->position);
+
+
+    r1.setPosition(position);
+    r2.setPosition(sf::Vector2f(position.x + size.x, position.y));
+    r3.setPosition(getCorner());
+    r4.setPosition(sf::Vector2f(position.x, position.y + size.y));
+    //r5.setPosition(center);
+    lineL[0] = sf::Vertex(center - sf::Vector2f(5.f, 5.f));
+    lineL[1] = sf::Vertex(center + sf::Vector2f(5.f, 5.f));
+    lineR[0] = sf::Vertex(center - sf::Vector2f(5.f, -5.f));
+    lineR[1] = sf::Vertex(center + sf::Vector2f(5.f, -5.f));
 
     this->active.clear();
 }
@@ -105,6 +143,16 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
 void aabbox::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(drawABox);
+    if (selected) {
+        target.draw(r1);
+        target.draw(r2);
+        target.draw(r3);
+        target.draw(r4);
+        //target.draw(r5);
+        target.draw(lineL, 2, sf::Lines);
+        target.draw(lineR, 2, sf::Lines);
+    }
+
 }
 
 //inline void aabbox::move(sf::Vector2f arg){ this->direction = normalize(arg); }

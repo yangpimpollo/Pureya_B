@@ -155,6 +155,8 @@
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabbox.cpp" />
     <ClCompile Include="Source\physics\aabb_system.cpp" />
+    <ClCompile Include="Source\pieces\object_A.cpp" />
+    <ClCompile Include="Source\pieces\object_B.cpp" />
     <ClCompile Include="Source\pieces\particle.cpp" />
     <ClCompile Include="Source\prime\debug_mode.cpp" />
     <ClCompile Include="Source\prime\game_window.cpp" />
@@ -168,6 +170,8 @@
     <ClInclude Include="Header\physics\aabbox.h" />
     <ClInclude Include="Header\physics\aabb_system.h" />
     <ClInclude Include="Header\physics\math.h" />
+    <ClInclude Include="Header\pieces\object_A.h" />
+    <ClInclude Include="Header\pieces\object_B.h" />
     <ClInclude Include="Header\pieces\particle.h" />
     <ClInclude Include="Header\prime\debug_mode.h" />
     <ClInclude Include="Header\prime\game_window.h" />

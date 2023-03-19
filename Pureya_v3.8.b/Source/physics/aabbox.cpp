@@ -46,7 +46,7 @@ aabbox::~aabbox()
 
 void aabbox::update(sf::Event event, sf::Time deltaTime)
 {
-    float m = all_ABbox[0]->getNexCorner().y;
+    //float m = all_ABbox[0]->getNexCorner().y;
     bool ver = false;
     bool hor = false;
 
@@ -72,9 +72,9 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
             if (hor) direction.x += direction.x * -1.f;
             if (ver) direction.y += direction.y * -1.f;
         }
-        else {
-            direction += direction * -1.f;
-        }
+        //else {
+            //direction += direction * -1.f;
+        //}
         
         drawABox.setOutlineColor(color2);
     }

@@ -4,6 +4,7 @@
 
 #include "prime/scene.h"
 #include "physics/aabbox.h"
+#include "pieces/object_A.h"
 
 class sc_Physics1 : public scene
 {
@@ -24,6 +25,8 @@ private:
 	aabbox c1;
 	aabbox c2;
 	aabbox c3;
+
+	object_A aa1;
 };
 
 

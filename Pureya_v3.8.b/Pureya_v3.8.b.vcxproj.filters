@@ -75,6 +75,12 @@
     <ClCompile Include="Source\physics\aabb_system.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\pieces\object_A.cpp">
+      <Filter>Source Files\pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pieces\object_B.cpp">
+      <Filter>Source Files\pieces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\game_core.h">
@@ -121,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="Header\physics\math.h">
       <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\pieces\object_A.h">
+      <Filter>Header Files\pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\pieces\object_B.h">
+      <Filter>Header Files\pieces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

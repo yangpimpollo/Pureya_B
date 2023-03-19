@@ -20,6 +20,9 @@ public:
 
 	inline void move(sf::Vector2f arg) { this->direction = normalize(arg); }
 	inline void setPosition(sf::Vector2f arg) { this->position = arg; }
+	inline void setSize(sf::Vector2f arg) { this->size = arg; }
+	inline void setID(std::string arg) { this->id = arg; }
+	inline std::string getID() { return this->id; }
 
 	inline sf::Vector2f getPosition() { return position; }
 	inline sf::Vector2f getCorner() { return position + size; }
@@ -31,12 +34,16 @@ public:
 	inline void setAllBox(std::vector<aabbox*>& all_ABbox_arg) { this->all_ABbox = all_ABbox_arg; }
 	inline void addActiveCollision(int arg) { this->active.push_back(arg);}
 
-private:
-	game_core* app;
+protected:
+	std::vector<int> active;
 	std::vector<aabbox*> all_ABbox;
 
+private:
+	game_core* app;
+	
 
 
+	std::string id = "none";
 	float speed = 0.10f;
 	sf::Vector2f position, size, center;
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
@@ -48,7 +55,7 @@ private:
 	sf::Color color2 = sf::Color(224, 62, 78);
 	sf::Color color3 = sf::Color(144, 0, 255);
 
-	std::vector<int> active;
+	
 
 	//std::vector<ABbox*>* all_ABbox;
 

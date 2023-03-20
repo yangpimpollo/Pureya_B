@@ -36,7 +36,7 @@ void object_A::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void object_A::render()
 {
-	//aabbox::draw(&this);
+	
 }
 
 void object_A::destroy()

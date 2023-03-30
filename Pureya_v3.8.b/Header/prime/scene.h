@@ -9,14 +9,15 @@
 
 class game_core;
 
-class scene
+class scene : public sf::Drawable
 {
 public:
 	// abstract class
 	//scene(){};
 	//~scene(){ std::cout << "delete scene" << std::endl; };
 	virtual void update(sf::Event event, sf::Time deltaTime) {};
-	virtual void render() {};
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) {};
+	//virtual void render() {};
 	virtual void destroy() {};
 	
 

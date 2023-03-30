@@ -11,7 +11,7 @@ public:
 	load_mode(game_core& arg);
 	~load_mode();
 	void update(sf::Event event, sf::Time deltaTime) override;
-	void render() override;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void destroy() override;
 private:
 	game_core* app;

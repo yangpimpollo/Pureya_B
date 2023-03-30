@@ -26,6 +26,10 @@ inline sf::Vector2f normalize(sf::Vector2f vector) {
     }
 }
 
+inline float magnitude(sf::Vector2f vector) {
+    return std::sqrt((vector.x * vector.x) + (vector.y * vector.y));
+}
+
 inline void swap(std::pair <float, int>& arg0, std::pair <float, int>& arg1) {
     std::pair <float, short> aux = arg0;
     arg0 = arg1;

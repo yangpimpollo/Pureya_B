@@ -81,6 +81,15 @@
     <ClCompile Include="Source\pieces\object_B.cpp">
       <Filter>Source Files\pieces</Filter>
     </ClCompile>
+    <ClCompile Include="Source\pieces\box_control.cpp">
+      <Filter>Source Files\pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scene\sc_Physics2.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\physics\obj_box.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\game_core.h">
@@ -133,6 +142,15 @@
     </ClInclude>
     <ClInclude Include="Header\pieces\object_B.h">
       <Filter>Header Files\pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\pieces\box_control.h">
+      <Filter>Header Files\pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\scene\sc_Physics2.h">
+      <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\physics\obj_box.h">
+      <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

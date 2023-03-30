@@ -33,7 +33,7 @@ aabbox::aabbox(game_core& arg, sf::Vector2f position, sf::Vector2f size)
     r4.setRadius(3.f);
     r4.setOrigin(sf::Vector2f(3.f, 3.f));
     r4.setFillColor(color3);
-
+    
     //r5.setRadius(3.f);
     //r5.setOrigin(sf::Vector2f(3.f, 3.f));
     //r5.setFillColor(color3);
@@ -81,20 +81,38 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
     else {
         drawABox.setOutlineColor(color1);
     }
-
+    //sf::Vector2i pixelPos = sf::Vector2i(event.mouseButton.x, event.mouseButton.y);
     sf::Vector2i pixelPos = app->window->getMousePosition();
     sf::Vector2f mousePos = app->window->mapPixelToCoords(pixelPos);
     bool inBox = (mousePos.x > getPosition().x && mousePos.x < getCorner().x &&
                   mousePos.y > getPosition().y && mousePos.y < getCorner().y )? true : false;
 
+    //*--------------------------------------------------*/
+    bool inR1 = (magnitude(r1.getPosition() - mousePos) < 3.f) ? true : false;
+
+    if (inR1) {
+        r1.setFillColor(color1);
+    }
+    else {
+        r1.setFillColor(color3);
+    }
+    /*--------------------------------------------------**/
+
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
         
         selected = false;
-        if (inBox && !clic1) {
+        selR1 = false;
+        if (inBox && !clic1 && !inR1) {
             clic1 = true;
             
             mosPoss0 = mousePos - position;
             std::cout << "click & select" << std::endl;
+        }
+
+        if (inR1 && !clic1) {
+            clic1 = true;
+            r1.setFillColor(color1);
+            std::cout << "click R1" << std::endl;
         }
         
     }
@@ -103,13 +121,19 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
         if (clic1) {
             clic1 = false; 
             selected = true;
+            selR1 = true;
             std::cout << "released click" << std::endl;
         }
         
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) {
+        std::cout << "c+c+c" << std::endl;
+        this->size += sf::Vector2f(2.f, 2.f);
+        drawABox.setSize(size);
+    }
 
-
+    
 
 
    /* if (inBox) {
@@ -117,6 +141,10 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
     }*/
 
     if (selected) {
+        drawABox.setOutlineColor(color3);
+    }
+
+    if (clic1 && selR1) {
         drawABox.setOutlineColor(color3);
     }
 
@@ -131,7 +159,7 @@ void aabbox::update(sf::Event event, sf::Time deltaTime)
     r2.setPosition(sf::Vector2f(position.x + size.x, position.y));
     r3.setPosition(getCorner());
     r4.setPosition(sf::Vector2f(position.x, position.y + size.y));
-    //r5.setPosition(center);
+
     lineL[0] = sf::Vertex(center - sf::Vector2f(5.f, 5.f));
     lineL[1] = sf::Vertex(center + sf::Vector2f(5.f, 5.f));
     lineR[0] = sf::Vertex(center - sf::Vector2f(5.f, -5.f));

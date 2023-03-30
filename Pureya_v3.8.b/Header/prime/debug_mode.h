@@ -7,13 +7,14 @@
 
 class game_core;
 
-class debug_mode
+class debug_mode : public sf::Drawable
 {
 public:
 	debug_mode(game_core& arg);
 	~debug_mode();
 	void update(sf::Event event, sf::Time deltaTime);
-	void render();
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	
 	void set_fps(int arg);
 	inline int getDebug_toggle() const { return debug_toggle; };
 	inline void setDebug_toggle(bool arg) { this->debug_toggle = arg; };

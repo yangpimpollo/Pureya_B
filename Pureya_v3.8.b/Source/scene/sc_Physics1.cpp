@@ -25,6 +25,7 @@ sc_Physics1::sc_Physics1(game_core& arg) : app(&arg)
 	//aabbSystem.includeToScene(c2);
 	//c3 = aabbox(*app, sf::Vector2f(150.f, 600.f), sf::Vector2f(200.f, 50.f));
 	//aabbSystem.includeToScene(c3);
+	circle = box_control(*app);
 }
 
 sc_Physics1::~sc_Physics1()
@@ -38,29 +39,30 @@ void sc_Physics1::update(sf::Event event, sf::Time deltaTime)
 	this->aa1.move(app->joyControl->getLjoystick());
 	this->aabbSystem.update(event, deltaTime);
 	
-	this->b1.update(event, deltaTime);
-	this->b2.update(event, deltaTime);
-	this->b3.update(event, deltaTime);
+	//this->b1.update(event, deltaTime);
+	//this->b2.update(event, deltaTime);
+	//this->b3.update(event, deltaTime);
 
 	this->aa1.update(event, deltaTime);
 	//this->c1.update(event, deltaTime);
 	//this->c2.update(event, deltaTime);
 	//this->c3.update(event, deltaTime);
-	
+	//this->circle.update(event, deltaTime);
 	
 }
 
-void sc_Physics1::render()
+void sc_Physics1::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	app->window->draw(this->back);
-	app->window->draw(this->b1);
-	app->window->draw(this->b2);
-	app->window->draw(this->b3);
+	target.draw(this->back);
+	//target.draw(this->b1);
+	//target.draw(this->b2);
+	//target.draw(this->b3);
 
-	app->window->draw(this->aa1);
-	//app->window->draw(this->c1);
-	//app->window->draw(this->c2);
-	//app->window->draw(this->c3);
+	target.draw(this->aa1);
+	//target.draw(this->c1);
+	//target.draw(this->c2);
+	//target.draw(this->c3);
+	//target.draw(this->circle);
 }
 
 void sc_Physics1::destroy(){ sc_Physics1::~sc_Physics1(); }

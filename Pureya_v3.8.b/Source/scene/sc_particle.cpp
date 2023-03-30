@@ -27,11 +27,11 @@ void sc_particle::update(sf::Event event, sf::Time deltaTime)
 	p1.update(event, deltaTime);
 }
 
-void sc_particle::render()
+void sc_particle::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	app->window->draw(this->back);
-	app->window->draw(this->bigbox);
-	app->window->draw(this->p1);
+	target.draw(this->back);
+	target.draw(this->bigbox);
+	target.draw(this->p1);
 }
 
 void sc_particle::destroy() { sc_particle::~sc_particle(); }

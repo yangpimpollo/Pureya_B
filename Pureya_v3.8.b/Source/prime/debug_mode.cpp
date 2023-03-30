@@ -64,14 +64,13 @@ void debug_mode::update(sf::Event event, sf::Time deltaTime)
 		
 }
 
-void debug_mode::render()
+void debug_mode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	app->window->draw(this->fps_txt);
-	app->window->draw(this->mouse_X);
-	app->window->draw(this->mouse_Y);
-	app->window->draw(this->NjoyX);
-	app->window->draw(this->NjoyY);
-	//app->window->draw(this->lang_test);
+	target.draw(this->fps_txt);
+	target.draw(this->mouse_X);
+	target.draw(this->mouse_Y);
+	target.draw(this->NjoyX);
+	target.draw(this->NjoyY);
 }
 
 void debug_mode::set_fps(int arg)

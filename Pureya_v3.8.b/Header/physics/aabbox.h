@@ -61,6 +61,7 @@ private:
 
 	bool clic1 = false;
 	bool selected = false;
+	bool selR1 = false;
 	sf::Vector2f mosPoss0;
 
 };

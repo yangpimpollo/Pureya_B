@@ -49,12 +49,12 @@ void load_mode::update(sf::Event event, sf::Time deltaTime)
     load1.setRotation(-angle);
 }
 
-void load_mode::render()
+void load_mode::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    app->window->draw(this->back);
-    app->window->draw(this->load_txt);
-    app->window->draw(this->load1);
-    app->window->draw(this->load2);
+    target.draw(this->back);
+    target.draw(this->load_txt);
+    target.draw(this->load1);
+    target.draw(this->load2);
 }
 
 void load_mode::destroy() { load_mode::~load_mode(); }

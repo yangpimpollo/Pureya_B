@@ -1,25 +1,24 @@
 #pragma once
-#ifndef SC_PARTICLE_H_INCLUDED
-#define SC_PARTICLE_H_INCLUDED
+#ifndef SC_PHYSICS2_H_INCLUDED
+#define SC_PHYSICS2_H_INCLUDED
 
 #include "prime/scene.h"
-#include "pieces/particle.h"
+#include "physics/obj_box.h"
 
-class sc_particle : public scene
+class sc_Physics2 : public scene
 {
 public:
-	sc_particle(game_core& arg);
-	~sc_particle();
+	sc_Physics2(game_core& arg);
+	~sc_Physics2();
 	void update(sf::Event event, sf::Time deltaTime) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void destroy() override;
 
 private:
 	game_core* app;
-	sf::RectangleShape back, bigbox;
+	sf::RectangleShape back;
 
-	particle p1;
-
+	obj_box b1;
 };
 
 

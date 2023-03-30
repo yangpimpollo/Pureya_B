@@ -9,6 +9,7 @@
 #include "prime/scene.h"
 #include "scene/sc_particle.h"
 #include "scene/sc_Physics1.h"
+#include "scene/sc_Physics2.h"
 //#include "scene/sc_splash.h"
 
 //class game_core;
@@ -26,13 +27,14 @@ namespace gameScenes
 	};
 };
 
-class scene_Manager
+class scene_Manager : public sf::Drawable
 {
 public:
 	scene_Manager(game_core& arg);
 	~scene_Manager();
 	void update(sf::Event event, sf::Time deltaTime);
-	void render();
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	
 	void changeScene(gameScenes::index arg);
 
 
@@ -48,7 +50,8 @@ inline scene_Manager::scene_Manager(game_core& arg) : app(&arg)
 {
 	//this->active_scene = new load_mode(*app);
 	//this->active_scene = new sc_particle(*app);
-	this->active_scene = new sc_Physics1(*app);
+	//this->active_scene = new sc_Physics1(*app);
+	this->active_scene = new sc_Physics2(*app);
 }
 
 inline scene_Manager::~scene_Manager()
@@ -63,9 +66,9 @@ inline void scene_Manager::update(sf::Event event, sf::Time deltaTime)
 	this->active_scene->update(event, deltaTime);
 }
 
-inline void scene_Manager::render()
+inline void scene_Manager::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	this->active_scene->render();
+	target.draw(*active_scene);
 }
 
 inline void scene_Manager::changeScene(gameScenes::index arg)

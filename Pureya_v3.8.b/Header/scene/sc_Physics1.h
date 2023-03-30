@@ -5,6 +5,7 @@
 #include "prime/scene.h"
 #include "physics/aabbox.h"
 #include "pieces/object_A.h"
+#include "pieces/box_control.h"
 
 class sc_Physics1 : public scene
 {
@@ -12,7 +13,7 @@ public:
 	sc_Physics1(game_core& arg);
 	~sc_Physics1();
 	void update(sf::Event event, sf::Time deltaTime) override;
-	void render() override;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void destroy() override;
 
 private:
@@ -27,6 +28,7 @@ private:
 	aabbox c3;
 
 	object_A aa1;
+	box_control circle;
 };
 
 

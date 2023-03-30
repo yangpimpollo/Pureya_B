@@ -93,7 +93,7 @@ void game_core::render()
 {
     this->window->clear(sf::Color::Black);
     this->window->setWinView();
-    this->scene_mng->render();
-    this->debug->render();
+    this->window->draw(*scene_mng);
+    this->window->draw(*debug);
     this->window->display();
 }

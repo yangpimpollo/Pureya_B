@@ -18,7 +18,7 @@ private:
 	game_core* app;
 	sf::RectangleShape back;
 
-	obj_box b1;
+	obj_box b1, b2;
 };
 
 

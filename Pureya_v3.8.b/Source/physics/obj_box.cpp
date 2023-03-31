@@ -5,8 +5,8 @@ obj_box::obj_box()
 {
 }
 
-obj_box::obj_box(game_core& arg, sf::Vector2f position, sf::Vector2f size)
-	: app(&arg), position(position), size(size)
+obj_box::obj_box(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::string id)
+	: app(&arg), position(position), size(size), id(id)
 {
     drawABox.setSize(size);
     drawABox.setPosition(position);
@@ -34,6 +34,8 @@ obj_box::~obj_box()
 
 void obj_box::update(sf::Event event, sf::Time deltaTime)
 {
+    collisionDetection();
+
     sf::Vector2i pixelPos = app->window->getMousePosition();
     mousePos = app->window->mapPixelToCoords(pixelPos);
 
@@ -44,33 +46,32 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
     inBox = (mousePos.x > getPosition().x && mousePos.x < getCorner().x&&
         mousePos.y > getPosition().y && mousePos.y < getCorner().y) ? true : false;
 
-    
-
-    
 
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
         if (!click) {
             click = true;
             
             
-            if (inR1) { click_status = 1; }
-            else if (inR2) { click_status = 2; }
-            else if (inR3) { click_status = 3; }
-            else if (inR4) { click_status = 4; }
-            else if (inBox) { click_status = 0; }
-            else { click_status = 5; }
+            if (inR1) { click_mode = 1; }
+            else if (inR2) { click_mode = 2; }
+            else if (inR3) { click_mode = 3; }
+            else if (inR4) { click_mode = 4; }
+            else if (inBox) { click_mode = 0; }
+            else { click_mode = 5; }
 
             clickPress();
-            std::cout << "click: " << click_status << std::endl;
+            //std::cout << "click: " << getID() << std::endl;
         } 
     }
     if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
         if (click) {
             click = false;
-            std::cout << "rel" << std::endl;
+            //std::cout << "rel" << std::endl;
         }        
     }
     StatusMode();
+
+    setPosition(position + (direction * speed));
 
     drawABox.setSize(size);
     drawABox.setPosition(this->position);
@@ -78,6 +79,11 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
     r2.setPosition(sf::Vector2f(position.x + size.x, position.y));
     r3.setPosition(getCorner());
     r4.setPosition(sf::Vector2f(position.x, position.y + size.y));
+    sf::Vector2f center = position + size / 2.f;;
+    lineL[0] = sf::Vertex(center - sf::Vector2f(5.f, 5.f));
+    lineL[1] = sf::Vertex(center + sf::Vector2f(5.f, 5.f));
+    lineR[0] = sf::Vertex(center - sf::Vector2f(5.f, -5.f));
+    lineR[1] = sf::Vertex(center + sf::Vector2f(5.f, -5.f));
 }
 
 void obj_box::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -88,12 +94,51 @@ void obj_box::draw(sf::RenderTarget& target, sf::RenderStates states) const
         target.draw(r2);
         target.draw(r3);
         target.draw(r4);
+        target.draw(lineL, 2, sf::Lines);
+        target.draw(lineR, 2, sf::Lines);
     }
+}
+
+void obj_box::collisionDetection()
+{
+    bool ver = false;
+    bool hor = false;
+
+    if (active.size() > 0) {
+        if (direction != sf::Vector2f(0.f, 0.f)) {
+            for (int i = 0; i < active.size(); i++) {
+                if (!hor) {
+                    if (!(getCorner().y < all_ABbox[active[i]]->getNexPosition().y ||
+                        getPosition().y > all_ABbox[active[i]]->getNexCorner().y)) {
+                        hor = true;
+                        //std::cout << "2" << std::endl;
+                    }
+                }
+                if (!ver) {
+                    if (!(getPosition().x > all_ABbox[active[i]]->getNexCorner().x ||
+                        getCorner().x < all_ABbox[active[i]]->getNexPosition().x)) {
+                        ver = true;
+                        //std::cout << "1" << std::endl;
+                    }
+                }
+
+            }
+            if (hor) direction.x += direction.x * -1.f;
+            if (ver) direction.y += direction.y * -1.f;
+        }
+
+        drawABox.setOutlineColor(color2);
+    }
+    else {
+        drawABox.setOutlineColor(color1);
+    }
+
+    this->active.clear();
 }
 
 void obj_box::clickPress()
 {
-    switch (click_status) {
+    switch (click_mode) {
     case 0:
         selected = true;
         mosPoss0 = mousePos - position;
@@ -119,37 +164,34 @@ void obj_box::StatusMode()
     if (inR4) { r4.setFillColor(color1); }else { r4.setFillColor(color3); }
 
     // ...............
+    sf::Vector2f delta = mousePos - mosPoss0;
 
     if (click) {
-        switch (click_status) {
+        switch (click_mode) {
         case 0:
-            position = mousePos - mosPoss0;
+            position = delta;
             break;
         case 1: {
-            sf::Vector2f rest = mousePos - mosPoss0;
-            if ((size0 - rest).x > 10.f && (size0 - rest).y > 10.f) {
+            if ((size0 - delta).x > 10.f && (size0 - delta).y > 10.f) {
                 position = mousePos;
-                size = size0 - rest;
+                size = size0 - delta;
             }
         }   break;
         case 2: {
-            sf::Vector2f rest = mousePos - mosPoss0;
-            if ((size0 + rest).x > 10.f && (size0 - rest).y > 10.f) {
-                position = position0 + sf::Vector2f(0.f, rest.y);
-                size = size0 + sf::Vector2f(rest.x, -rest.y);
+            if ((size0 + delta).x > 10.f && (size0 - delta).y > 10.f) {
+                position = position0 + sf::Vector2f(0.f, delta.y);
+                size = size0 + sf::Vector2f(delta.x, -delta.y);
             }
         }   break;
         case 3: {
-            sf::Vector2f rest = mousePos - mosPoss0;
-            if ((size0 + rest).x > 10.f && (size0 + rest).y > 10.f) {
-                size = size0 + rest;
+            if ((size0 + delta).x > 10.f && (size0 + delta).y > 10.f) {
+                size = size0 + delta;
             }
         }   break;
         case 4: {
-            sf::Vector2f rest = mousePos - mosPoss0;
-            if ((size0 - rest).x > 10.f && (size0 + rest).y > 10.f) {
-                position = position0 + sf::Vector2f(rest.x, 0.f);
-                size = size0 + sf::Vector2f(-rest.x, rest.y);
+            if ((size0 - delta).x > 10.f && (size0 + delta).y > 10.f) {
+                position = position0 + sf::Vector2f(delta.x, 0.f);
+                size = size0 + sf::Vector2f(-delta.x, delta.y);
             }
         }   break;
         case 5:

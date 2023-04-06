@@ -26,6 +26,9 @@ obj_box::obj_box(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::
     r4.setRadius(3.f);
     r4.setOrigin(sf::Vector2f(3.f, 3.f));
     r4.setFillColor(color3);
+    r5.setRadius(5.f);
+    r5.setOrigin(sf::Vector2f(5.f, 5.f));
+    r5.setFillColor(color3);
 }
 
 obj_box::~obj_box()
@@ -43,6 +46,7 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
     inR2 = (magnitude(r2.getPosition() - mousePos) < 3.f) ? true : false;
     inR3 = (magnitude(r3.getPosition() - mousePos) < 3.f) ? true : false;
     inR4 = (magnitude(r4.getPosition() - mousePos) < 3.f) ? true : false;
+    inR5 = (magnitude(r5.getPosition() - mousePos) < 5.f) ? true : false;
     inBox = (mousePos.x > getPosition().x && mousePos.x < getCorner().x&&
         mousePos.y > getPosition().y && mousePos.y < getCorner().y) ? true : false;
 
@@ -51,13 +55,13 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
         if (!click) {
             click = true;
             
-            
             if (inR1) { click_mode = 1; }
             else if (inR2) { click_mode = 2; }
             else if (inR3) { click_mode = 3; }
             else if (inR4) { click_mode = 4; }
+            else if (inR5) { click_mode = 5; }
             else if (inBox) { click_mode = 0; }
-            else { click_mode = 5; }
+            else { click_mode = 6; }
 
             clickPress();
             //std::cout << "click: " << getID() << std::endl;
@@ -72,14 +76,18 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
     StatusMode();
 
     setPosition(position + (direction * speed));
+    z_buffer = getCorner().y + delta_zbuff;
 
     drawABox.setSize(size);
     drawABox.setPosition(this->position);
+
+    sf::Vector2f center = position + size / 2.f;
+    
     r1.setPosition(position);
     r2.setPosition(sf::Vector2f(position.x + size.x, position.y));
     r3.setPosition(getCorner());
     r4.setPosition(sf::Vector2f(position.x, position.y + size.y));
-    sf::Vector2f center = position + size / 2.f;;
+    r5.setPosition(sf::Vector2f(center.x, z_buffer));
     lineL[0] = sf::Vertex(center - sf::Vector2f(5.f, 5.f));
     lineL[1] = sf::Vertex(center + sf::Vector2f(5.f, 5.f));
     lineR[0] = sf::Vertex(center - sf::Vector2f(5.f, -5.f));
@@ -89,11 +97,12 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
 void obj_box::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(drawABox);
-    if (selected) {
+    if (selected) {      
         target.draw(r1);
         target.draw(r2);
         target.draw(r3);
         target.draw(r4);
+        target.draw(r5);
         target.draw(lineL, 2, sf::Lines);
         target.draw(lineR, 2, sf::Lines);
     }
@@ -149,6 +158,10 @@ void obj_box::clickPress()
         size0 = size;
         break;
     case 5:
+        delta_zbuff0 = delta_zbuff;
+        mosPoss0 = mousePos;
+        break;
+    case 6:
         selected = false;
         break;
     }
@@ -157,11 +170,12 @@ void obj_box::clickPress()
 void obj_box::StatusMode()
 {
     // hover mode ....
-    
+
     if (inR1) { r1.setFillColor(color1); }else { r1.setFillColor(color3); }
     if (inR2) { r2.setFillColor(color1); }else { r2.setFillColor(color3); }
     if (inR3) { r3.setFillColor(color1); }else { r3.setFillColor(color3); }
     if (inR4) { r4.setFillColor(color1); }else { r4.setFillColor(color3); }
+    if (inR5) { r5.setFillColor(color1); }else { r5.setFillColor(color3); }
 
     // ...............
     sf::Vector2f delta = mousePos - mosPoss0;
@@ -194,7 +208,10 @@ void obj_box::StatusMode()
                 size = size0 + sf::Vector2f(-delta.x, delta.y);
             }
         }   break;
-        case 5:
+        case 5: {
+            delta_zbuff = delta_zbuff0 + delta.y;
+        }   break;
+        case 6:
             break;
         }
     }

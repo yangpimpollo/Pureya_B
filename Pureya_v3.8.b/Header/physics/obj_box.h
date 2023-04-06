@@ -44,9 +44,12 @@ private:
 
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
 	float speed = 0.10f;
+	float z_buffer;
+	float delta_zbuff = 0.f;
+	float delta_zbuff0;
 
 	sf::RectangleShape drawABox;
-	sf::CircleShape r1, r2, r3, r4;
+	sf::CircleShape r1, r2, r3, r4, r5;
 	sf::Vertex lineL[2], lineR[2];
 	sf::Color color1 = sf::Color(64, 224, 208);
 	sf::Color color2 = sf::Color(224, 62, 78);
@@ -69,7 +72,7 @@ private:
 	int click_mode;
 	bool click = false;	
 	bool selected = false;
-	bool inR1, inR2, inR3, inR4, inBox;
+	bool inR1, inR2, inR3, inR4, inR5, inBox;
 };
 
 #endif

@@ -8,16 +8,16 @@ sc_Physics1::sc_Physics1(game_core& arg) : app(&arg)
 	back.setFillColor(sf::Color::Color(0, 0, 25, 220));
 
 	b1 = aabbox(*app, sf::Vector2f(300.f, 300.f), sf::Vector2f(50.f, 50.f));
-	aabbSystem.includeToScene(b1);
+	////aabbSystem.includeToScene(b1);
 	b2 = aabbox(*app, sf::Vector2f(850.f, 330.f), sf::Vector2f(250.f, 150.f));
 	b2.setID("door13");
-	aabbSystem.includeToScene(b2);
+	////aabbSystem.includeToScene(b2);
 	b3 = aabbox(*app, sf::Vector2f(90.f, 100.f), sf::Vector2f(51.f, 280.f));
 	b3.setID("portal8");
-	aabbSystem.includeToScene(b3);
+	////aabbSystem.includeToScene(b3);
 
 	aa1 = object_A(*app);
-	aabbSystem.includeToScene(aa1);
+	////aabbSystem.includeToScene(aa1);
 
 	//c1 = aabbox(*app, sf::Vector2f(200.f, 300.f), sf::Vector2f(100.f, 100.f));
 	//aabbSystem.includeToScene(c1);

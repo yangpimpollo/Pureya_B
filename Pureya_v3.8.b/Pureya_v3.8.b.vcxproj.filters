@@ -69,19 +69,10 @@
     <ClCompile Include="Source\scene\sc_Physics1.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\physics\aabbox.cpp">
-      <Filter>Source Files\physics</Filter>
-    </ClCompile>
     <ClCompile Include="Source\physics\aabb_system.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
     <ClCompile Include="Source\pieces\object_A.cpp">
-      <Filter>Source Files\pieces</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pieces\object_B.cpp">
-      <Filter>Source Files\pieces</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\pieces\box_control.cpp">
       <Filter>Source Files\pieces</Filter>
     </ClCompile>
     <ClCompile Include="Source\scene\sc_Physics2.cpp">
@@ -125,9 +116,6 @@
     <ClInclude Include="Header\pieces\particle.h">
       <Filter>Header Files\pieces</Filter>
     </ClInclude>
-    <ClInclude Include="Header\physics\aabbox.h">
-      <Filter>Header Files\physics</Filter>
-    </ClInclude>
     <ClInclude Include="Header\physics\aabb_system.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
@@ -138,12 +126,6 @@
       <Filter>Header Files\physics</Filter>
     </ClInclude>
     <ClInclude Include="Header\pieces\object_A.h">
-      <Filter>Header Files\pieces</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\pieces\object_B.h">
-      <Filter>Header Files\pieces</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\pieces\box_control.h">
       <Filter>Header Files\pieces</Filter>
     </ClInclude>
     <ClInclude Include="Header\scene\sc_Physics2.h">

@@ -3,9 +3,8 @@
 #define SC_PHYSICS1_H_INCLUDED
 
 #include "prime/scene.h"
-#include "physics/aabbox.h"
+#include "physics/obj_box.h"
 #include "pieces/object_A.h"
-#include "pieces/box_control.h"
 
 class sc_Physics1 : public scene
 {
@@ -20,15 +19,11 @@ private:
 	game_core* app;
 	sf::RectangleShape back;
 
-	aabbox b1;
-	aabbox b2;
-	aabbox b3;
-	aabbox c1;
-	aabbox c2;
-	aabbox c3;
+	obj_box b1;
+	obj_box b2;
+	obj_box b3;
 
 	object_A aa1;
-	box_control circle;
 };
 
 

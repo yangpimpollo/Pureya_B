@@ -15,6 +15,11 @@ struct load_res {
 	enum class stg { loading };
 };
 
+struct sc_Physics2_res {
+	enum class res { tex1 };
+	enum class stg { };
+};
+
 enum class scene1_id {  };
 enum class scene2_id {  };
 enum class scene3_id { mamelon, back2, icon, tree, Full_Momentum };

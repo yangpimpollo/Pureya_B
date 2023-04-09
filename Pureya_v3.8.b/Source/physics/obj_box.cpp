@@ -10,9 +10,16 @@ obj_box::obj_box(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::
 {
     drawABox.setSize(size);
     drawABox.setPosition(position);
-    drawABox.setFillColor(sf::Color::Transparent);
+    //drawABox.setFillColor(sf::Color::Transparent);
     drawABox.setOutlineThickness(1.f);
     drawABox.setOutlineColor(color1);
+
+    /*texbox.setSize(sf::Vector2f(125.f, 125.f));
+    texbox.setPosition(position);*/
+    
+    //load1Tex.loadFromFile("../res/sc_Physics2_res/grass03.png");
+    //texbox.setTexture(&load1Tex);
+    //drawABox.setTexture(&load1Tex);
 
     r1.setRadius(3.f);
     r1.setOrigin(sf::Vector2f(3.f, 3.f));
@@ -37,7 +44,7 @@ obj_box::~obj_box()
 
 void obj_box::update(sf::Event event, sf::Time deltaTime)
 {
-    collisionDetection();
+    collisionDetection(); 
 
     sf::Vector2i pixelPos = app->window->getMousePosition();
     mousePos = app->window->mapPixelToCoords(pixelPos);
@@ -80,6 +87,7 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
 
     drawABox.setSize(size);
     drawABox.setPosition(this->position);
+    drawABox.setTexture(&obj_texture);
 
     sf::Vector2f center = position + size / 2.f;
     
@@ -97,7 +105,8 @@ void obj_box::update(sf::Event event, sf::Time deltaTime)
 void obj_box::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(drawABox);
-    if (selected) {      
+    if (selected) { 
+        //target.draw(texbox);
         target.draw(r1);
         target.draw(r2);
         target.draw(r3);

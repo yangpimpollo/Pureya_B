@@ -17,6 +17,8 @@ public:
 	void update(sf::Event event, sf::Time deltaTime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	void addTextureBox(sf::Vector2f rel_position, sf::Vector2f size);
+
 	inline sf::Vector2f getPosition() { return position; }	
 	inline sf::Vector2f getSize() { return size; }
 	inline std::string getID() { return id; }
@@ -29,9 +31,12 @@ public:
 	inline void setSize(sf::Vector2f arg) { size = arg; }
 	inline void setID(std::string arg) { id = arg; }
 	inline void move(sf::Vector2f arg) { direction = normalize(arg); }
+	inline void setTexture(sf::Texture arg) { obj_texture = arg; }
 
 	inline void setAllBox(std::vector<obj_box*>& all_ABbox_arg) { all_ABbox = all_ABbox_arg; }
 	inline void addActiveCollision(int arg) { active.push_back(arg); }
+
+	
 	
 protected:
 	std::vector<int> active;
@@ -48,7 +53,8 @@ private:
 	float delta_zbuff = 0.f;
 	float delta_zbuff0;
 
-	sf::RectangleShape drawABox;
+	sf::RectangleShape drawABox, texbox;
+	sf::Texture obj_texture;
 	sf::CircleShape r1, r2, r3, r4, r5;
 	sf::Vertex lineL[2], lineR[2];
 	sf::Color color1 = sf::Color(64, 224, 208);

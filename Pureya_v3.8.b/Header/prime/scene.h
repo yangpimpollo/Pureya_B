@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "prime/resource_station.h"
 #include "physics/aabb_system.h"
 
 

@@ -17,8 +17,15 @@ public:
 private:
 	game_core* app;
 	sf::RectangleShape back;
+	sf::RectangleShape b1;
 
-	obj_box b1, b2;
+	//sf::Texture obj1Tex;
+	
+
+	resource_station<sc_Physics2_res::res, sc_Physics2_res::stg>* res;
+
+	sf::Texture load1Tex;
+	obj_box obj1;
 };
 
 

@@ -2,7 +2,6 @@
 #ifndef LOAD_MODE_H_INCLUDED
 #define LOAD_MODE_H_INCLUDED
 
-#include "prime/resource_station.h"
 #include "prime/scene.h"
 
 class load_mode : public scene

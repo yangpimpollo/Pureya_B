@@ -155,6 +155,7 @@
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabb_system.cpp" />
     <ClCompile Include="Source\physics\obj_box.cpp" />
+    <ClCompile Include="Source\pieces\object.cpp" />
     <ClCompile Include="Source\pieces\object_A.cpp" />
     <ClCompile Include="Source\pieces\particle.cpp" />
     <ClCompile Include="Source\prime\debug_mode.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Header\physics\aabb_system.h" />
     <ClInclude Include="Header\physics\math.h" />
     <ClInclude Include="Header\physics\obj_box.h" />
+    <ClInclude Include="Header\pieces\object.h" />
     <ClInclude Include="Header\pieces\object_A.h" />
     <ClInclude Include="Header\pieces\particle.h" />
     <ClInclude Include="Header\prime\debug_mode.h" />
@@ -187,6 +189,7 @@
   <ItemGroup>
     <None Include="..\config\global_res.wo" />
     <None Include="..\config\load_res.wo" />
+    <None Include="..\config\sc_Physics2_res.wo" />
     <None Include="..\config\settings.wo" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

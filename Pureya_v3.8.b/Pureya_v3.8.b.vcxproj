@@ -154,7 +154,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabb_system.cpp" />
+    <ClCompile Include="Source\physics\objBox.cpp" />
+    <ClCompile Include="Source\physics\objTex.cpp" />
     <ClCompile Include="Source\physics\obj_box.cpp" />
+    <ClCompile Include="Source\physics\square.cpp" />
     <ClCompile Include="Source\pieces\object.cpp" />
     <ClCompile Include="Source\pieces\object_A.cpp" />
     <ClCompile Include="Source\pieces\particle.cpp" />
@@ -170,7 +173,10 @@
     <ClInclude Include="Header\game_core.h" />
     <ClInclude Include="Header\physics\aabb_system.h" />
     <ClInclude Include="Header\physics\math.h" />
+    <ClInclude Include="Header\physics\objBox.h" />
+    <ClInclude Include="Header\physics\objTex.h" />
     <ClInclude Include="Header\physics\obj_box.h" />
+    <ClInclude Include="Header\physics\square.h" />
     <ClInclude Include="Header\pieces\object.h" />
     <ClInclude Include="Header\pieces\object_A.h" />
     <ClInclude Include="Header\pieces\particle.h" />

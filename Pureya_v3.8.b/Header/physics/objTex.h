@@ -1,29 +1,28 @@
 #pragma once
-#ifndef OBJECT_H_INCLUDED
-#define OBJECT_H_INCLUDED
+#ifndef OBJTEX_H_INCLUDED
+#define OBJTEX_H_INCLUDED
 
-#include <iostream> 
-#include <SFML/Graphics.hpp>
 #include "physics/square.h"
 
-class game_core;
 
-class object : public square
+class objTex : public square
 {
 public:
-	object();
-	object(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::string id = "none");
-	~object();
+	objTex();
+	objTex(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::string id = "none");
+	~objTex();
 	void update(sf::Event event, sf::Time deltaTime);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	inline std::string getID() { return id; }
+
 	inline void setTexture(sf::Texture arg) { obj_texture = arg; }
+	inline void setID(std::string arg) { id = arg; }
 
 private:
 
 	std::string id;
 	sf::Texture obj_texture;
-
 };
 
 

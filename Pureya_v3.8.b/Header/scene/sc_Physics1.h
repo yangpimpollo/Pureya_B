@@ -3,7 +3,7 @@
 #define SC_PHYSICS1_H_INCLUDED
 
 #include "prime/scene.h"
-#include "physics/obj_box.h"
+#include "physics/objBox.h"
 #include "pieces/object_A.h"
 
 class sc_Physics1 : public scene
@@ -19,9 +19,9 @@ private:
 	game_core* app;
 	sf::RectangleShape back;
 
-	obj_box b1;
-	obj_box b2;
-	obj_box b3;
+	objBox b1;
+	objBox b2;
+	objBox b3;
 
 	object_A aa1;
 };

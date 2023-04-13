@@ -3,12 +3,12 @@
 #ifndef OBJECT_A_H_INCLUDED
 #define OBJECT_A_H_INCLUDED
 
-#include "physics/obj_box.h"
+#include "physics/objBox.h"
 
 class game_core;
 
 
-class object_A : public obj_box
+class object_A : public objBox
 {
 public:
 	object_A();

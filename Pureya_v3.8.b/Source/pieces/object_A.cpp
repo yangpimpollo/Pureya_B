@@ -6,7 +6,7 @@ object_A::object_A()
 
 }
 
-object_A::object_A(game_core& arg) : obj_box(arg, sf::Vector2f(300.f, 300.f), sf::Vector2f(100.f, 100.f))
+object_A::object_A(game_core& arg) : objBox(arg, sf::Vector2f(300.f, 300.f), sf::Vector2f(100.f, 100.f))
 {
 
 
@@ -26,12 +26,12 @@ void object_A::update(sf::Event event, sf::Time deltaTime)
 			std::cout << "portal8" << std::endl;
 		}
 	}
-	obj_box::update(event, deltaTime);
+	objBox::update(event, deltaTime);
 }
 
 void object_A::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	obj_box::draw(target, states);
+	objBox::draw(target, states);
 }
 
 void object_A::render()

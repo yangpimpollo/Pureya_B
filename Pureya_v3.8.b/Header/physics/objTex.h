@@ -19,7 +19,7 @@ public:
 	inline void setTexture(sf::Texture arg) { obj_texture = arg; }
 	inline void setID(std::string arg) { id = arg; }
 
-private:
+protected:
 
 	std::string id;
 	sf::Texture obj_texture;

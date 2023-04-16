@@ -155,17 +155,14 @@
     <ClCompile Include="Source\game_core.cpp" />
     <ClCompile Include="Source\physics\aabb_system.cpp" />
     <ClCompile Include="Source\physics\objBox.cpp" />
+    <ClCompile Include="Source\physics\objShape.cpp" />
     <ClCompile Include="Source\physics\objTex.cpp" />
-    <ClCompile Include="Source\physics\obj_box.cpp" />
     <ClCompile Include="Source\physics\square.cpp" />
-    <ClCompile Include="Source\pieces\object.cpp" />
     <ClCompile Include="Source\pieces\object_A.cpp" />
-    <ClCompile Include="Source\pieces\particle.cpp" />
     <ClCompile Include="Source\prime\debug_mode.cpp" />
     <ClCompile Include="Source\prime\game_window.cpp" />
     <ClCompile Include="Source\prime\joystick.cpp" />
     <ClCompile Include="Source\prime\load_mode.cpp" />
-    <ClCompile Include="Source\scene\sc_particle.cpp" />
     <ClCompile Include="Source\scene\sc_Physics1.cpp" />
     <ClCompile Include="Source\scene\sc_Physics2.cpp" />
   </ItemGroup>
@@ -174,12 +171,10 @@
     <ClInclude Include="Header\physics\aabb_system.h" />
     <ClInclude Include="Header\physics\math.h" />
     <ClInclude Include="Header\physics\objBox.h" />
+    <ClInclude Include="Header\physics\objShape.h" />
     <ClInclude Include="Header\physics\objTex.h" />
-    <ClInclude Include="Header\physics\obj_box.h" />
     <ClInclude Include="Header\physics\square.h" />
-    <ClInclude Include="Header\pieces\object.h" />
     <ClInclude Include="Header\pieces\object_A.h" />
-    <ClInclude Include="Header\pieces\particle.h" />
     <ClInclude Include="Header\prime\debug_mode.h" />
     <ClInclude Include="Header\prime\game_window.h" />
     <ClInclude Include="Header\prime\joystick.h" />
@@ -188,7 +183,6 @@
     <ClInclude Include="Header\prime\resource_station.h" />
     <ClInclude Include="Header\prime\scene.h" />
     <ClInclude Include="Header\prime\scene_manager.h" />
-    <ClInclude Include="Header\scene\sc_particle.h" />
     <ClInclude Include="Header\scene\sc_Physics1.h" />
     <ClInclude Include="Header\scene\sc_Physics2.h" />
   </ItemGroup>

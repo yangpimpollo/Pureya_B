@@ -48,3 +48,10 @@ void aabb_system::update(sf::Event event, sf::Time deltaTime)
 		if (!isActive) active.push_back(intervals[i].second);
 	}
 }
+
+void aabb_system::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	for (int i = 0; i < all_ABbox.size(); i++) {
+		all_ABbox[i]->draw(target, states);
+	}
+}

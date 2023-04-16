@@ -56,7 +56,7 @@ void square::update(sf::Event event, sf::Time deltaTime)
             else if (inBox) { click_mode = 0; }
             else { click_mode = 5; }
 
-            clickPress();
+            if (edit_mode) clickPress();
             //std::cout << "click: " << getID() << std::endl;
         }
     }
@@ -66,7 +66,7 @@ void square::update(sf::Event event, sf::Time deltaTime)
             //std::cout << "rel" << std::endl;
         }
     }
-    StatusMode();
+    if(edit_mode) StatusMode();
 
     setPosition(position + (direction * speed));
 

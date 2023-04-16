@@ -16,7 +16,7 @@ struct load_res {
 };
 
 struct sc_Physics2_res {
-	enum class res { tex1 };
+	enum class res { tex1, tex2 };
 	enum class stg { };
 };
 

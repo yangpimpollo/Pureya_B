@@ -21,10 +21,12 @@ public:
 	inline sf::Vector2f getSize() { return size; }
 	inline sf::Vector2f getDirection() { return direction; }
 	inline sf::Vector2f getCorner() { return position + size; }
+	inline bool getSelected() { return selected; }
 
 	inline void setPosition(sf::Vector2f arg) { position = arg; }
 	inline void setSize(sf::Vector2f arg) { size = arg; }
 	inline void move(sf::Vector2f arg) { direction = normalize(arg); }
+	inline void setEditMode(bool arg) { edit_mode = arg; }
 
 protected:
 	game_core* app;
@@ -57,6 +59,7 @@ protected:
 	bool click = false;
 	bool selected = false;
 	bool inR1, inR2, inR3, inR4, inR5, inBox;
+	bool edit_mode = true;
 
 };
 

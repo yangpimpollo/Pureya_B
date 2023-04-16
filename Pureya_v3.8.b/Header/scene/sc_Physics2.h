@@ -3,9 +3,8 @@
 #define SC_PHYSICS2_H_INCLUDED
 
 #include "prime/scene.h"
-#include "physics/obj_box.h"
 #include "physics/objTex.h"
-#include "physics/square.h"
+#include "physics/objShape.h"
 
 class sc_Physics2 : public scene
 {
@@ -19,18 +18,14 @@ public:
 private:
 	game_core* app;
 	sf::RectangleShape back;
-	//sf::RectangleShape b1;
-	square s1;
 
-	objTex A1;
-
-	//sf::Texture obj1Tex;
-	
+	//objTex A1;
+	objShape SS1;
+	objShape SS2;
+	objBox B1;
 
 	resource_station<sc_Physics2_res::res, sc_Physics2_res::stg>* res;
 
-	//sf::Texture load1Tex;
-	//obj_box obj1;
 };
 
 

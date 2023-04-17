@@ -26,6 +26,9 @@ square::square(game_core& arg, sf::Vector2f position, sf::Vector2f size)
     r4.setRadius(3.f);
     r4.setOrigin(sf::Vector2f(3.f, 3.f));
     r4.setFillColor(color3);
+    r5.setRadius(5.f);
+    r5.setOrigin(sf::Vector2f(5.f, 5.f));
+    r5.setFillColor(color3);
 }
 
 square::~square()
@@ -41,6 +44,7 @@ void square::update(sf::Event event, sf::Time deltaTime)
     inR2 = (magnitude(r2.getPosition() - mousePos) < 3.f) ? true : false;
     inR3 = (magnitude(r3.getPosition() - mousePos) < 3.f) ? true : false;
     inR4 = (magnitude(r4.getPosition() - mousePos) < 3.f) ? true : false;
+    inR5 = (magnitude(r5.getPosition() - mousePos) < 5.f) ? true : false;
     inBox = (mousePos.x > getPosition().x && mousePos.x < getCorner().x&&
         mousePos.y > getPosition().y && mousePos.y < getCorner().y) ? true : false;
 
@@ -53,8 +57,9 @@ void square::update(sf::Event event, sf::Time deltaTime)
             else if (inR2) { click_mode = 2; }
             else if (inR3) { click_mode = 3; }
             else if (inR4) { click_mode = 4; }
+            else if (inR5) { click_mode = 5; }
             else if (inBox) { click_mode = 0; }
-            else { click_mode = 5; }
+            else { click_mode = 6; }
 
             if (edit_mode) clickPress();
             //std::cout << "click: " << getID() << std::endl;
@@ -63,12 +68,13 @@ void square::update(sf::Event event, sf::Time deltaTime)
     if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
         if (click) {
             click = false;
-            //std::cout << "rel" << std::endl;
+            //std::cout << "buffer: " << z_buffer << std::endl;
         }
     }
     if(edit_mode) StatusMode();
 
     setPosition(position + (direction * speed));
+    z_buffer = getCorner().y + delta_zbuff;
 
     drawABox.setSize(size);
     drawABox.setPosition(this->position);
@@ -79,6 +85,7 @@ void square::update(sf::Event event, sf::Time deltaTime)
     r2.setPosition(sf::Vector2f(position.x + size.x, position.y));
     r3.setPosition(getCorner());
     r4.setPosition(sf::Vector2f(position.x, position.y + size.y));
+    r5.setPosition(sf::Vector2f(center.x, z_buffer));
     lineL[0] = sf::Vertex(center - sf::Vector2f(5.f, 5.f));
     lineL[1] = sf::Vertex(center + sf::Vector2f(5.f, 5.f));
     lineR[0] = sf::Vertex(center - sf::Vector2f(5.f, -5.f));
@@ -93,6 +100,7 @@ void square::draw(sf::RenderTarget& target, sf::RenderStates states) const
         target.draw(r2);
         target.draw(r3);
         target.draw(r4);
+        //target.draw(r5);
         target.draw(lineL, 2, sf::Lines);
         target.draw(lineR, 2, sf::Lines);
     }
@@ -111,6 +119,10 @@ void square::clickPress()
         size0 = size;
         break;
     case 5:
+        delta_zbuff0 = delta_zbuff;
+        mosPoss0 = mousePos;
+        break;
+    case 6:
         selected = false;
         break;
     }
@@ -128,6 +140,8 @@ void square::StatusMode()
     else { r3.setFillColor(color3); }
     if (inR4) { r4.setFillColor(color1); }
     else { r4.setFillColor(color3); }
+    if (inR5) { r5.setFillColor(color1); }
+    else { r5.setFillColor(color3); }
 
     // ...............
     sf::Vector2f delta = mousePos - mosPoss0;
@@ -160,7 +174,10 @@ void square::StatusMode()
                 size = size0 + sf::Vector2f(-delta.x, delta.y);
             }
         }   break;
-        case 5:
+        case 5: {
+            delta_zbuff = delta_zbuff0 + delta.y;
+        }   break;
+        case 6:
             break;
         }
     }

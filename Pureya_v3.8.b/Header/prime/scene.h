@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "prime/object_station.h"
 #include "prime/resource_station.h"
 #include "physics/aabb_system.h"
 
@@ -26,7 +27,7 @@ private:
 
 protected:
 	aabb_system aabbSystem;
-	
+	object_station* objStation;
 
 };
 

@@ -25,4 +25,5 @@ void objTex::update(sf::Event event, sf::Time deltaTime)
 void objTex::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	square::draw(target, states);
+	if (selected) target.draw(r5);
 }

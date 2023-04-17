@@ -34,6 +34,9 @@ protected:
 
 	sf::Vector2f direction = sf::Vector2f(0.f, 0.f);
 	float speed = 0.10f;
+	float z_buffer;
+	float delta_zbuff = 0.f;
+	float delta_zbuff0;
 
 	sf::RectangleShape drawABox;
 	sf::CircleShape r1, r2, r3, r4, r5;

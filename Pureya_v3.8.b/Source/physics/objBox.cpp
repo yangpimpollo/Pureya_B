@@ -7,6 +7,7 @@ objBox::objBox()
 objBox::objBox(game_core& arg, sf::Vector2f position, sf::Vector2f size, std::string id)
 	: square(arg, position, size), id(id)
 {
+    //edit_mode = false;
 }
 
 objBox::~objBox()

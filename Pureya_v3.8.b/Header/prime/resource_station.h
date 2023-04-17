@@ -168,7 +168,7 @@ inline void resource_station<EnumA, typename EnumB>::readResources()
 		stgmap.insert(std::make_pair(EnumB(i), i));
 		getline(initFile, datatext);
 	}
-	
+	initFile.close();
 }
 
 template<typename EnumA, typename EnumB>

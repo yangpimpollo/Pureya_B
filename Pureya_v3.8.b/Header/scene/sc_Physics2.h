@@ -19,7 +19,7 @@ private:
 	game_core* app;
 	sf::RectangleShape back;
 
-	//objTex A1;
+	objTex A1;
 	objShape SS1;
 	objShape SS2;
 	objBox B1;

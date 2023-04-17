@@ -23,6 +23,8 @@ protected:
 
 	std::string id;
 	sf::Texture obj_texture;
+
+	
 };
 
 

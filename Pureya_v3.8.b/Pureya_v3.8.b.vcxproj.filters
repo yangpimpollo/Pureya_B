@@ -40,6 +40,9 @@
     <Filter Include="Source Files\physics">
       <UniqueIdentifier>{766295ed-afb6-4bb2-bd2a-6eef48eac1ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\data">
+      <UniqueIdentifier>{0393f31b-4d86-4796-8ce9-507d948e0216}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -80,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="Source\physics\objBox.cpp">
       <Filter>Source Files\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Header\physics\objShape.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\objShape.cpp">
       <Filter>Source Files\physics</Filter>
@@ -143,6 +143,9 @@
     <ClInclude Include="Header\physics\objShape.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
+    <ClInclude Include="Header\prime\object_station.h">
+      <Filter>Header Files\prime</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\config\settings.wo">
@@ -156,6 +159,9 @@
     </None>
     <None Include="..\config\sc_Physics2_res.wo">
       <Filter>Resource Files\config</Filter>
+    </None>
+    <None Include="..\data\sc_Physics2_obj.wo">
+      <Filter>Resource Files\data</Filter>
     </None>
   </ItemGroup>
 </Project>

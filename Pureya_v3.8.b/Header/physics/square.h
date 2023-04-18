@@ -26,6 +26,7 @@ public:
 	inline void setPosition(sf::Vector2f arg) { position = arg; }
 	inline void setSize(sf::Vector2f arg) { size = arg; }
 	inline void move(sf::Vector2f arg) { direction = normalize(arg); }
+	inline void setZbuffer(float arg) { delta_zbuff = arg - z_buffer; }
 	inline void setEditMode(bool arg) { edit_mode = arg; }
 
 protected:

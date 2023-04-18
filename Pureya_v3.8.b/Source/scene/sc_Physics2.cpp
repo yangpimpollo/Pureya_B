@@ -4,14 +4,14 @@
 sc_Physics2::sc_Physics2(game_core& arg) : app(&arg)
 {
 	this->res = new resource_station<sc_Physics2_res::res, sc_Physics2_res::stg>("sc_Physics2_res");
-	this->objStation = new object_station("sc_Physics2_obj");
+	this->objStation = new object_station(*app, "sc_Physics2_obj");
 
 	back.setSize(sf::Vector2f(1365.f, 765.f));
 	back.setPosition(0.f, 0.f);
 	back.setFillColor(sf::Color::Color(0, 0, 25, 220));
 
 	A1 = objTex(*app, sf::Vector2f(682.5f, 412.5f), sf::Vector2f(125.f, 125.f));
-	A1.setTexture(res->getTexture(sc_Physics2_res::res::tex1));
+	A1.setTexture(res->getTexture(sc_Physics2_res::res(0)));
 
 	//SS1 = objShape(*app, sf::Vector2f(682.5f, 412.5f), sf::Vector2f(65.f, 65.f));
 	//SS1.setTexture(res->getTexture(sc_Physics2_res::res::tex1));

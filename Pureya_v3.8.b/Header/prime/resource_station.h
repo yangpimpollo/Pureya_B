@@ -28,6 +28,7 @@ public:
 
 	inline sf::Font& getFont(EnumA id) { return font.at(id); };
 	inline sf::Texture& getTexture(EnumA id) { return texture.at(id); };
+	inline sf::Texture& getTexture(int arg) { return texture.at(EnumA(arg)); };
 	inline sf::SoundBuffer& getSound(EnumA id) { return sound.at(id); };
 
 	inline std::wstring& getStg(EnumB id) { return stg[stgmap.at(id)]; };

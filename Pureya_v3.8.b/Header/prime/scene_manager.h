@@ -35,7 +35,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	
 	void changeScene(gameScenes::index arg);
-
+	inline scene* getActiveScene() { return active_scene; }
 
 private:
 	game_core* app;

@@ -35,6 +35,7 @@ public:
 	inline int& getSet(settings id) { return setmap.at(id); };
 
 	inline bool getComplete() { return complete; };
+	std::vector<sf::Texture> getTextureArray();
 	std::wstring to_wstring(std::string str);
 
 	
@@ -181,6 +182,16 @@ inline void resource_station<EnumA, EnumB>::setLanguaje(language arg)
 		case language::SP:  stg = sp_pack; break;
 		default: stg = zh_pack; break;
 	}
+}
+
+template<typename EnumA, typename EnumB>
+inline std::vector<sf::Texture> resource_station<EnumA, EnumB>::getTextureArray()
+{
+	std::vector<sf::Texture> tex_vector;
+	for (const auto& pair : texture) {
+		tex_vector.push_back(pair.second);
+	}
+	return tex_vector;
 }
 
 template<typename EnumA, typename EnumB>

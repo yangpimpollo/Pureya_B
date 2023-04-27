@@ -7,19 +7,23 @@
 #include <string> 
 #include <vector>
 #include <sstream>
-#include "prime/resource_station.h"
 #include "physics/objTex.h"
 
-class object_station
+
+class object_station : public sf::Drawable
 {
 public:
 	object_station();
-	object_station(game_core& arg, std::string name);
+	object_station(game_core& arg, std::vector<sf::Texture> texArray,std::string name);
 	~object_station();
+
+	void update(sf::Event event, sf::Time deltaTime);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	void readObjects();
 
 private:
 	game_core* app;
+	std::vector<sf::Texture> texArray;
 	std::string name;
 
 	std::vector<objTex*> all_TexBox;
@@ -30,7 +34,8 @@ inline object_station::object_station()
 {
 }
 
-inline object_station::object_station(game_core& arg, std::string name) : app(&arg), name(name)
+inline object_station::object_station(game_core& arg, std::vector<sf::Texture> texArray, std::string name)
+	: app(&arg), texArray(texArray), name(name)
 {
 	std::cout << "load scene objects" << std::endl;
 	readObjects();
@@ -40,6 +45,25 @@ inline object_station::~object_station()
 {
 	std::cout << "delete " << name << " objects" << std::endl;
 }
+
+inline void object_station::update(sf::Event event, sf::Time deltaTime)
+{
+	for (const auto& value : all_TexBox) {
+		value->update(event, deltaTime);
+	}
+}
+
+inline void object_station::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	for (const auto& value : all_TexBox) {
+		value->draw(target, states);
+	}
+}
+
+//inline void object_station::draw(sf::RenderTarget& target, sf::RenderStates states) const
+//{
+
+//}
 
 inline void object_station::readObjects()
 {
@@ -78,12 +102,15 @@ inline void object_station::readObjects()
 
 		sf::Vector2f post = sf::Vector2f(std::stof(s_array[1]), std::stof(s_array[2]));
 		sf::Vector2f size = sf::Vector2f(std::stof(s_array[3]), std::stof(s_array[4]));
-		float b = std::stof(s_array[5]);
-		float t = std::stoi(s_array[6]);
+		//float b = std::stof(s_array[5]);
+		//float t = std::stoi(s_array[6]);
 
 		objTex obj = objTex(*app, post, size, s_array[7]);
+		obj.setZbuffer(std::stof(s_array[5]));
+		obj.setTexture(texArray[std::stoi(s_array[6])]);
+		all_TexBox.push_back(&obj);
 
-		std::cout << "   size:  " << s_array.size() << std::endl;
+		//std::cout << "   size:  " << s_array.size() << std::endl;
 		getline(initFile, datatext);
 	}
 

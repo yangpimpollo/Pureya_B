@@ -1,7 +1,8 @@
 ﻿
 	sc_Physics2 resources
 
-	0:2:0:0
+	0:3:0:0
 
 sc_Physics2_res::tex1      #  tex1.jpg
 sc_Physics2_res::tex1      #  tex2.png
+sc_Physics2_res::tex1      #  tex3.png

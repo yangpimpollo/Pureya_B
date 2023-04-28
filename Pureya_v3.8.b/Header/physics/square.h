@@ -21,6 +21,7 @@ public:
 	inline sf::Vector2f getSize() { return size; }
 	inline sf::Vector2f getDirection() { return direction; }
 	inline sf::Vector2f getCorner() { return position + size; }
+	inline float getZbuffer() { return z_buffer;  }
 	inline bool getSelected() { return selected; }
 
 	inline void setPosition(sf::Vector2f arg) { position = arg; }

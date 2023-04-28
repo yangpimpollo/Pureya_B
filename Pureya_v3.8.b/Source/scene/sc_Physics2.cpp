@@ -53,9 +53,22 @@ void sc_Physics2::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(this->back);
 	target.draw(this->A1);
-	target.draw(this->objStation);
+	//target.draw(*objStation);
 	//target.draw(this->SS1);
 	//target.draw(this->SS2);
+
+	//------------------------------------------------
+	std::vector<std::pair <float, int>> intervals;
+
+	for (int i = 0; i < objStation->getAllTexBox().size(); i++) {
+		intervals.push_back(std::make_pair(objStation->getAllTexBox()[i].getZbuffer(), i));
+	}
+	quickSort(intervals, 0, intervals.size() - 1);
+
+	for (int i = 0; i < objStation->getAllTexBox().size(); i++) {
+		target.draw(objStation->getAllTexBox()[intervals[i].second]);
+	}
+	//------------------------------------------------
 
 	target.draw(this->aabbSystem);
 }

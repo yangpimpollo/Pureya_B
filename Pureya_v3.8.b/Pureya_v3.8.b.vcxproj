@@ -163,6 +163,7 @@
     <ClCompile Include="Source\prime\game_window.cpp" />
     <ClCompile Include="Source\prime\joystick.cpp" />
     <ClCompile Include="Source\prime\load_mode.cpp" />
+    <ClCompile Include="Source\prime\object_station.cpp" />
     <ClCompile Include="Source\scene\sc_Physics1.cpp" />
     <ClCompile Include="Source\scene\sc_Physics2.cpp" />
   </ItemGroup>
